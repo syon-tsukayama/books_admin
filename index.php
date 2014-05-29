@@ -26,7 +26,23 @@ else
 	echo '接続成功';
 }
 
+// 検索SQL作成
+$sql =<<<EOS
+SELECT `id`, `book_name`, `author_name` FROM `books`
+EOS;
 
+// SQL実行準備
+$stmt = $conn->prepare($sql);
+
+// SQL実行
+$result = $stmt->execute();
+
+// 検索結果取得
+while($row = $stmt->fetch()) 
+{
+	print_r($row);
+	echo '<hr />';
+}
 
 ?>
 	</body>
