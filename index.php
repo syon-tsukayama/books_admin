@@ -1,9 +1,9 @@
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
 
-	<body>
+    <body>
 <?php
 
 echo 'test:'.date('Y-m-d');
@@ -19,11 +19,11 @@ $conn = new PDO($dsn, $db_username, $db_password);
 
 if(!$conn)
 {
-	echo '接続失敗';
+    echo '接続失敗';
 }
 else
 {
-	echo '接続成功';
+    echo '接続成功';
 }
 
 // 検索SQL作成
@@ -37,13 +37,27 @@ $stmt = $conn->prepare($sql);
 // SQL実行
 $result = $stmt->execute();
 
+?>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>図書名</th>
+            <th>著者名</th>
+        </tr>
+<?php
+
 // 検索結果取得
 while($row = $stmt->fetch()) 
 {
-	print_r($row);
-	echo '<hr />';
-}
-
 ?>
-	</body>
+    <tr>
+        <td><?php echo $row['id'] ?></td>
+        <td><?php echo $row['book_name'] ?></td>
+        <td><?php echo $row['author_name'] ?></td>
+    </tr>
+    <?php
+}
+?>
+    </table>
+    </body>
 </html>
