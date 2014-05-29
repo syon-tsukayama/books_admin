@@ -6,8 +6,6 @@
     <body>
 <?php
 
-echo 'test:'.date('Y-m-d');
-
 // データベース接続情報設定
 $dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
 
