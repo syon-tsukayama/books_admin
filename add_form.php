@@ -4,8 +4,8 @@
     </head>
 
     <body>
-	<h3>登録処理入力画面</h3>
-	
+	<h3>図書データ登録 入力画面</h3>
+
     <form action="add.php" method="post">
     	図書名：<input type="text" name="book_name" /><br />	
     	図書名カナ：<input type="text" name="book_kana" /><br />
