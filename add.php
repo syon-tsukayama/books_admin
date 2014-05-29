@@ -23,6 +23,11 @@
     	exit;
     }
 
+	$book_name = trim($_POST['book_name']);
+	$book_kana = trim($_POST['book_kana']);
+	$author_name = trim($_POST['author_name']);
+	$author_kana = trim($_POST['author_kana']);
+
 	// データベース接続情報設定
 	$dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
 
@@ -41,9 +46,33 @@
     	echo '接続成功';
 	}
 
+	// 新規登録SQL作成
+	$sql =<<<EOS
+INSERT INTO  `books`
+(`book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`)
+VALUES (:book_name, :book_kana, :author_name, :author_kana, NOW(), NOW())
+EOS;
 
+	// SQL実行準備
+	$stmt = $conn->prepare($sql);
 
+	// 登録するデータを設定
+	$stmt->bindValue(':book_name', $book_name);
+	$stmt->bindValue(':book_kana', $book_kana);
+	$stmt->bindValue(':author_name', $author_name);
+	$stmt->bindValue(':author_kana', $author_kana);
 
+	// SQL実行
+	$result = $stmt->execute();
+
+	if($result) 
+	{
+		echo '登録成功';
+	}
+	else
+	{
+		echo '登録失敗';
+	}
     ?>
 
 
