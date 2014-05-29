@@ -36,6 +36,8 @@ $stmt = $conn->prepare($sql);
 $result = $stmt->execute();
 
 ?>
+    <a href="add_form.php">図書データ新規登録フォーム</a>
+
     <table border="1">
         <tr>
             <th>ID</th>

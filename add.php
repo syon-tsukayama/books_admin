@@ -74,7 +74,7 @@ EOS;
 	}
     ?>
 
-
+        <a href="index.php">図書データ一覧</a>
     </body>
 
 </html>
