@@ -7,8 +7,6 @@
     	<h3>図書データ登録 登録処理</h3>
     <?php
 
-    print_r($_POST);
-
     // 図書名のチェック
     if(empty($_POST['book_name']))
     {
@@ -23,6 +21,7 @@
     	exit;
     }
 
+    // 入力データの半角空白削除
 	$book_name = trim($_POST['book_name']);
 	$book_kana = trim($_POST['book_kana']);
 	$author_name = trim($_POST['author_name']);
