@@ -58,24 +58,16 @@ EOS;
         {
             $row = array();
         }
-
-        print_r($row);
-
-
         ?>
 
-
-
-
-
-
     <form action="add.php" method="post">
-    	図書名：<input type="text" name="book_name" /><br />	
-    	図書名カナ：<input type="text" name="book_kana" /><br />
-    	著者名：<input type="text" name="author_name" /><br />	
-    	著者名カナ：<input type="text" name="author_kana" /><br />
+        <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+    	図書名：<input type="text" name="book_name" value="<?php echo $row['book_name']; ?>" /><br />	
+    	図書名カナ：<input type="text" name="book_kana" value="<?php echo $row['book_kana']; ?>" /><br />
+    	著者名：<input type="text" name="author_name" value="<?php echo $row['author_name']; ?>" /><br />	
+    	著者名カナ：<input type="text" name="author_kana" value="<?php echo $row['author_kana']; ?>" /><br />
 
-    	<input type="submit" value="登録" />
+    	<input type="submit" value="更新" />
     	<a href="index.php">図書データ一覧</a>
     </form>
 
