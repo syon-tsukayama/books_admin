@@ -60,7 +60,7 @@ EOS;
         }
         ?>
 
-    <form action="add.php" method="post">
+    <form action="edit.php" method="post">
         <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
     	図書名：<input type="text" name="book_name" value="<?php echo $row['book_name']; ?>" /><br />	
     	図書名カナ：<input type="text" name="book_kana" value="<?php echo $row['book_kana']; ?>" /><br />
