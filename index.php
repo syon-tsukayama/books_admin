@@ -43,17 +43,22 @@ $result = $stmt->execute();
             <th>ID</th>
             <th>図書名</th>
             <th>著者名</th>
+            <th>編集</th>
         </tr>
 <?php
 
 // 検索結果取得
 while($row = $stmt->fetch()) 
 {
+    $book_id = $row['id'];
 ?>
     <tr>
-        <td><?php echo $row['id'] ?></td>
-        <td><?php echo $row['book_name'] ?></td>
-        <td><?php echo $row['author_name'] ?></td>
+        <td><?php echo $book_id; ?></td>
+        <td><?php echo $row['book_name']; ?></td>
+        <td><?php echo $row['author_name']; ?></td>
+        <td>
+            <a href="edit_form.php?book_id=<?php echo $book_id; ?>">編集</a>
+        </td>
     </tr>
     <?php
 }
