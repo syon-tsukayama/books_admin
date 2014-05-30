@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-    </head>
+<?php
+require_once('common.php');
+// ヘッダ出力
+output_html_header();
+?>
 
     <body>
     	<div class="container">

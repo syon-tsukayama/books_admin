@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
+<?php
+require_once('common.php');
+// ヘッダ出力
+output_html_header();
+?>
 
     <body>
     	<h3>図書データ削除 削除処理</h3>
