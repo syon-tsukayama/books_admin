@@ -17,6 +17,14 @@ output_html_header();
         exit;
     }
 
+    // 性別チェック
+    $genders = array('男', '女');
+    if(!empty($_POST['gender']) && !in_array($_POST['gender'], $genders))
+    {
+        echo 'なぞの性別です。';
+        exit;
+    }
+
     // 入力データの半角空白削除
     $name = trim($_POST['name']);
     $kana = trim($_POST['kana']);
