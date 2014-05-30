@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
+<?php
+require_once('common.php');
+// ヘッダ出力
+output_html_header();
+?>
 
     <body>
     	<h3>図書データ編集 更新処理</h3>
@@ -36,14 +38,8 @@
 	$author_name = trim($_POST['author_name']);
 	$author_kana = trim($_POST['author_kana']);
 
-	// データベース接続情報設定
-	$dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
-
-	$db_username = 'root';
-	$db_password = '';
-
 	// データベース接続
-	$conn = new PDO($dsn, $db_username, $db_password);
+	$conn = connect_database();
 
 	if(!$conn)
 	{

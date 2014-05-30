@@ -20,14 +20,8 @@ output_html_header();
     // 入力データの半角空白削除
 	$book_id = trim($_GET['book_id']);
 
-	// データベース接続情報設定
-	$dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
-
-	$db_username = 'root';
-	$db_password = '';
-
 	// データベース接続
-	$conn = new PDO($dsn, $db_username, $db_password);
+	$conn = connect_database();
 
 	if(!$conn)
 	{
