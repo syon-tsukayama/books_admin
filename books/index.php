@@ -129,7 +129,7 @@ if($is_search_option)
 		}
 
 		$where .=<<<EOS
-book_name = :book_name
+book_name LIKE :book_name
 EOS;
 	}
 
@@ -145,7 +145,7 @@ EOS;
 		}
 
 		$where .=<<<EOS
-book_kana = :book_kana
+book_kana LIKE :book_kana
 EOS;
 	}
 
@@ -161,7 +161,7 @@ EOS;
 		}
 
 		$where .=<<<EOS
-author_name = :author_name
+author_name LIKE :author_name
 EOS;
 	}
 
@@ -177,7 +177,7 @@ EOS;
 		}
 
 		$where .=<<<EOS
-author_kana = :author_kana
+author_kana LIKE :author_kana
 EOS;
 	}
 
@@ -196,22 +196,22 @@ if($is_search_option)
 {
 	if(!empty($book_name))
 	{
-    	$stmt->bindValue(':book_name', $book_name);
+    	$stmt->bindValue(':book_name', $book_name.'%');
 	}
 
 	if(!empty($book_kana))
 	{
-    	$stmt->bindValue(':book_kana', $book_kana);
+    	$stmt->bindValue(':book_kana', $book_kana.'%');
 	}
 
 	if(!empty($author_name))
 	{
-    	$stmt->bindValue(':author_name', $author_name);
+    	$stmt->bindValue(':author_name', $author_name.'%');
 	}
 
 	if(!empty($author_kana))
 	{
-    	$stmt->bindValue(':author_kana', $author_kana);
+    	$stmt->bindValue(':author_kana', $author_kana.'%');
 	}
 }
 
