@@ -8,34 +8,34 @@ output_html_header();
 
     <body>
         <div class="container">
-            <h3>図書データ登録 入力画面</h3>
+            <h3>利用者データ登録 入力画面</h3>
 
             <form action="add.php" method="post" class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名</label>
+                    <label class="col-sm-2 control-label">氏名</label>
                     <div class="col-xs-4">
-                        <input type="text" name="book_name" class="form-control" />
+                        <input type="text" name="name" class="form-control" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名カナ</label>
+                    <label class="col-sm-2 control-label">氏名カナ</label>
                     <div class="col-xs-4">
-                        <input type="text" name="book_kana" class="form-control" />
+                        <input type="text" name="kana" class="form-control" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名</label>
+                    <label class="col-sm-2 control-label">性別</label>
                     <div class="col-xs-4">
-                        <input type="text" name="author_name" class="form-control " />
+                        <input type="text" name="gender" class="form-control " />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名カナ</label>
+                    <label class="col-sm-2 control-label">電話番号</label>
                     <div class="col-xs-4">
-                        <input type="text" name="author_kana" class="form-control" />
+                        <input type="text" name="tel" class="form-control" />
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@ output_html_header();
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" value="登録" class="btn btn-primary" />
 
-                        <a href="index.php" class="btn btn-default">図書データ一覧</a>
+                        <a href="index.php" class="btn btn-default">利用者データ一覧</a>
                     </div>
                 </div>
             </form>
