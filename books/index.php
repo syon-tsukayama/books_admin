@@ -12,6 +12,90 @@ output_html_header();
 
 <?php
 
+
+// 検索条件有無フラグ
+$is_search_option = false;
+
+// 検索条件取得
+if(isset($_GET['book_name']))
+{
+	$book_name = trim($_GET['book_name']);
+	$is_search_option = true;
+}
+else
+{
+	$book_name = '';
+}
+if(isset($_GET['book_kana']))
+{
+	$book_kana = trim($_GET['book_kana']);
+	$is_search_option = true;
+}
+else
+{
+	$book_kana = '';
+}
+if(isset($_GET['author_name']))
+{
+	$author_name = trim($_GET['author_name']);
+	$is_search_option = true;
+}
+else
+{
+	$author_name = '';
+}
+if(isset($_GET['author_kana']))
+{
+	$author_kana = trim($_GET['author_kana']);
+	$is_search_option = true;
+}
+else
+{
+	$author_kana = '';
+}
+?>
+	<div>
+    	<form action="index.php" method="get" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">図書名</label>
+                <div class="col-xs-4">
+                    <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">図書名カナ</label>
+                <div class="col-xs-4">
+                    <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">著者名</label>
+                <div class="col-xs-4">
+                    <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">著者名カナ</label>
+                <div class="col-xs-4">
+                    <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="検索" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+	</div>
+
+    <a href="add_form.php" class="btn btn-primary">
+        <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
+    </a>
+<?php
 // データベース接続
 $conn = connect_database();
 
@@ -28,17 +112,112 @@ SELECT
 FROM `books`
 EOS;
 
+// SQL条件句作成
+if($is_search_option)
+{
+	$where = '';
+
+	if(!empty($book_name))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+book_name = :book_name
+EOS;
+	}
+
+	if(!empty($book_kana))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+book_kana = :book_kana
+EOS;
+	}
+
+	if(!empty($author_name))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+author_name = :author_name
+EOS;
+	}
+
+	if(!empty($author_kana))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+author_kana = :author_kana
+EOS;
+	}
+
+	if(!empty($where))
+	{
+		$sql .= $where;
+	}
+}
+
 // SQL実行準備
 $stmt = $conn->prepare($sql);
 
+
+// SQL条件句作成
+if($is_search_option)
+{
+	if(!empty($book_name))
+	{
+    	$stmt->bindValue(':book_name', $book_name);
+	}
+
+	if(!empty($book_kana))
+	{
+    	$stmt->bindValue(':book_kana', $book_kana);
+	}
+
+	if(!empty($author_name))
+	{
+    	$stmt->bindValue(':author_name', $author_name);
+	}
+
+	if(!empty($author_kana))
+	{
+    	$stmt->bindValue(':author_kana', $author_kana);
+	}
+}
+
 // SQL実行
 $result = $stmt->execute();
-
 ?>
-    <a href="add_form.php" class="btn btn-primary">
-        <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
-    </a>
-
     <table class="table table-striped table-hover">
         <tr>
             <th>ID</th>
