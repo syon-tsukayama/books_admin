@@ -23,7 +23,9 @@ if(!$conn)
 
 // 検索SQL作成
 $sql =<<<EOS
-SELECT `id`, `book_name`, `author_name` FROM `books`
+SELECT
+`id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`
+FROM `books`
 EOS;
 
 // SQL実行準備
@@ -41,7 +43,11 @@ $result = $stmt->execute();
         <tr>
             <th>ID</th>
             <th>図書名</th>
+            <th>図書名カナ</th>
             <th>著者名</th>
+            <th>著者名カナ</th>
+            <th>登録日時</th>
+            <th>更新日時</th>
             <th>編集</th>
             <th>削除</th>
         </tr>
@@ -55,7 +61,11 @@ while($row = $stmt->fetch())
     <tr>
         <td><?php echo $book_id; ?></td>
         <td><?php echo $row['book_name']; ?></td>
+        <td><?php echo $row['book_kana']; ?></td>
         <td><?php echo $row['author_name']; ?></td>
+        <td><?php echo $row['author_kana']; ?></td>
+        <td><?php echo $row['created']; ?></td>
+        <td><?php echo $row['updated']; ?></td>
         <td>
             <a href="edit_form.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
                 <i class="glyphicon glyphicon-edit"></i> 編集
