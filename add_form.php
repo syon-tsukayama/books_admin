@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -46,7 +47,7 @@
                 </div>
             </form>
         </div>
-        
+
         <script src="js/jquery-1.11.1.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
