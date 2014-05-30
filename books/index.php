@@ -53,6 +53,25 @@ else
 {
 	$author_kana = '';
 }
+if(isset($_GET['created_from']))
+{
+	$created_from = trim($_GET['created_from']);
+	$is_search_option = true;
+}
+else
+{
+	$created_from = '';
+}
+if(isset($_GET['created_to']))
+{
+	$created_to = trim($_GET['created_to']);
+	$is_search_option = true;
+}
+else
+{
+	$created_to = '';
+}
+
 ?>
 	<div>
     	<form action="index.php" method="get" class="form-horizontal" role="form">
@@ -81,6 +100,15 @@ else
                 <label class="col-sm-2 control-label">著者名カナ</label>
                 <div class="col-xs-4">
                     <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">登録日時</label>
+                <div class="col-xs-4">
+                    <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                    ～
+                    <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
                 </div>
             </div>
 
@@ -181,6 +209,38 @@ author_kana LIKE :author_kana
 EOS;
 	}
 
+	if(!empty($created_from))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+created >= :created_from
+EOS;
+	}
+
+	if(!empty($created_to))
+	{
+		if(empty($where))
+		{
+			$where .= ' WHERE ';
+		}
+		else
+		{
+			$where .= ' AND ';
+		}
+
+		$where .=<<<EOS
+created <= :created_to
+EOS;
+	}
+
 	if(!empty($where))
 	{
 		$sql .= $where;
@@ -196,7 +256,7 @@ if($is_search_option)
 {
 	if(!empty($book_name))
 	{
-    	$stmt->bindValue(':book_name', $book_name.'%');
+    	$stmt->bindValue(':book_name', '%'.$book_name.'%');
 	}
 
 	if(!empty($book_kana))
@@ -212,6 +272,16 @@ if($is_search_option)
 	if(!empty($author_kana))
 	{
     	$stmt->bindValue(':author_kana', $author_kana.'%');
+	}
+
+	if(!empty($created_from))
+	{
+    	$stmt->bindValue(':created_from', $created_from);
+	}
+
+	if(!empty($created_to))
+	{
+    	$stmt->bindValue(':created_to', $created_to);
 	}
 }
 
