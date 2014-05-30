@@ -8,7 +8,7 @@ output_html_header();
 
     <body>
         <div class="container">
-            <h3>図書データ一覧</h3>
+            <h3>利用者データ一覧</h3>
 
 <?php
 
@@ -23,7 +23,7 @@ if(!$conn)
 
 // 検索SQL作成
 $sql =<<<EOS
-SELECT `id`, `book_name`, `author_name` FROM `books`
+SELECT `id`, `name`, `tel` FROM `users`
 EOS;
 
 // SQL実行準備
@@ -34,14 +34,14 @@ $result = $stmt->execute();
 
 ?>
     <a href="add_form.php" class="btn btn-primary">
-        <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
+        <i class="glyphicon glyphicon-file"></i> 利用者データ新規登録フォーム
     </a>
 
     <table class="table table-striped table-hover">
         <tr>
             <th>ID</th>
-            <th>図書名</th>
-            <th>著者名</th>
+            <th>氏名</th>
+            <th>電話番号</th>
             <th>編集</th>
             <th>削除</th>
         </tr>
@@ -50,19 +50,19 @@ $result = $stmt->execute();
 // 検索結果取得
 while($row = $stmt->fetch())
 {
-    $book_id = $row['id'];
+    $user_id = $row['id'];
 ?>
     <tr>
-        <td><?php echo $book_id; ?></td>
-        <td><?php echo $row['book_name']; ?></td>
-        <td><?php echo $row['author_name']; ?></td>
+        <td><?php echo $user_id; ?></td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['tel']; ?></td>
         <td>
-            <a href="edit_form.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
+            <a href="edit_form.php?user_id=<?php echo $user_id; ?>" class="btn btn-default">
                 <i class="glyphicon glyphicon-edit"></i> 編集
             </a>
         </td>
         <td>
-            <a href="delete.php?book_id=<?php echo $book_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
+            <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
                 <i class="glyphicon glyphicon-trash"></i> 削除
             </a>
         </td>
