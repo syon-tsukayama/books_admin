@@ -37,7 +37,9 @@ $stmt = $conn->prepare($sql);
 $result = $stmt->execute();
 
 ?>
-    <a href="add_form.php" class="btn btn-primary">図書データ新規登録フォーム</a>
+    <a href="add_form.php" class="btn btn-primary">
+    	<i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
+    </a>
 
     <table class="table table-striped table-hover">
         <tr>
@@ -60,12 +62,12 @@ while($row = $stmt->fetch())
         <td><?php echo $row['author_name']; ?></td>
         <td>
             <a href="edit_form.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
-            <i class="glyphicon glyphicon-home"></i> 編集
+            	<i class="glyphicon glyphicon-edit"></i> 編集
             </a>
         </td>
         <td>
             <a href="delete.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
-            <i class="glyphicon glyphicon-trash"></i> 削除
+            	<i class="glyphicon glyphicon-trash"></i> 削除
             </a>
         </td>
     </tr>
