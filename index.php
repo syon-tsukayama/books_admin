@@ -61,10 +61,14 @@ while($row = $stmt->fetch())
         <td><?php echo $row['book_name']; ?></td>
         <td><?php echo $row['author_name']; ?></td>
         <td>
-            <a href="edit_form.php?book_id=<?php echo $book_id; ?>">編集</a>
+            <a href="edit_form.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
+            <i class="glyphicon glyphicon-home"></i> 編集
+            </a>
         </td>
         <td>
-            <a href="delete.php?book_id=<?php echo $book_id; ?>">削除</a>
+            <a href="delete.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
+            <i class="glyphicon glyphicon-trash"></i> 削除
+            </a>
         </td>
     </tr>
     <?php
