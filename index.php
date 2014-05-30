@@ -44,6 +44,7 @@ $result = $stmt->execute();
             <th>図書名</th>
             <th>著者名</th>
             <th>編集</th>
+            <th>削除</th>
         </tr>
 <?php
 
@@ -58,6 +59,9 @@ while($row = $stmt->fetch())
         <td><?php echo $row['author_name']; ?></td>
         <td>
             <a href="edit_form.php?book_id=<?php echo $book_id; ?>">編集</a>
+        </td>
+        <td>
+            <a href="delete.php?book_id=<?php echo $book_id; ?>">削除</a>
         </td>
     </tr>
     <?php
