@@ -8,7 +8,7 @@ output_html_header();
 
     <body>
         <div class="container">
-    		<h3>図書データ更新 編集画面</h3>
+            <h3>図書データ更新 編集画面</h3>
 
         <?php
 
@@ -64,7 +64,7 @@ EOS;
                         <input type="text" name="book_name" class="form-control" value="<?php echo $row['book_name']; ?>" />
                     </div>
                 </div>
-                
+
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">図書名カナ</label>

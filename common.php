@@ -33,21 +33,21 @@ function output_html_footer()
  */
 function connect_database()
 {
-	// データベース接続情報設定
-	$dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
+    // データベース接続情報設定
+    $dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
 
-	$db_username = 'root';
-	$db_password = '';
+    $db_username = 'root';
+    $db_password = '';
 
-	// データベース接続
-	$conn = new PDO($dsn, $db_username, $db_password);
+    // データベース接続
+    $conn = new PDO($dsn, $db_username, $db_password);
 
-	if(!$conn)
-	{
-    	echo '接続失敗';
-	}
+    if(!$conn)
+    {
+        echo '接続失敗';
+    }
 
-	return $conn;
+    return $conn;
 }
 
 

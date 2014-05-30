@@ -7,8 +7,8 @@ output_html_header();
 ?>
 
     <body>
-    	<div class="container">
-    		<h3>図書データ一覧</h3>
+        <div class="container">
+            <h3>図書データ一覧</h3>
 
 <?php
 
@@ -34,7 +34,7 @@ $result = $stmt->execute();
 
 ?>
     <a href="add_form.php" class="btn btn-primary">
-    	<i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
+        <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
     </a>
 
     <table class="table table-striped table-hover">
@@ -48,7 +48,7 @@ $result = $stmt->execute();
 <?php
 
 // 検索結果取得
-while($row = $stmt->fetch()) 
+while($row = $stmt->fetch())
 {
     $book_id = $row['id'];
 ?>
@@ -58,7 +58,7 @@ while($row = $stmt->fetch())
         <td><?php echo $row['author_name']; ?></td>
         <td>
             <a href="edit_form.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
-            	<i class="glyphicon glyphicon-edit"></i> 編集
+                <i class="glyphicon glyphicon-edit"></i> 編集
             </a>
         </td>
         <td>
@@ -70,7 +70,7 @@ while($row = $stmt->fetch())
     <?php
 }
 ?>
-		    </table>
+            </table>
         </div>
 
         <?php
