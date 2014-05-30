@@ -7,36 +7,29 @@ output_html_header();
 ?>
 
     <body>
-        <h3>図書データ編集 更新処理</h3>
+        <h3>利用者データ編集 更新処理</h3>
     <?php
 
-    // 図書IDチェック
-    if(empty($_POST['book_id']))
+    // 利用者IDチェック
+    if(empty($_POST['user_id']))
     {
-        echo '図書が指定されていません';
+        echo '利用者が指定されていません';
         exit;
     }
 
-    // 図書名のチェック
-    if(empty($_POST['book_name']))
+    // 氏名のチェック
+    if(empty($_POST['name']))
     {
-        echo '図書名が未入力です。';
-        exit;
-    }
-
-    // 著者名のチェック
-    if(empty($_POST['author_name']))
-    {
-        echo '著者名が未入力です。';
+        echo '氏名が未入力です。';
         exit;
     }
 
     // 入力データの半角空白削除
-    $book_id = trim($_POST['book_id']);
-    $book_name = trim($_POST['book_name']);
-    $book_kana = trim($_POST['book_kana']);
-    $author_name = trim($_POST['author_name']);
-    $author_kana = trim($_POST['author_kana']);
+    $user_id = trim($_POST['user_id']);
+    $name = trim($_POST['name']);
+    $kana = trim($_POST['kana']);
+    $gender = trim($_POST['gender']);
+    $tel = trim($_POST['tel']);
 
     // データベース接続
     $conn = connect_database();
@@ -48,25 +41,25 @@ output_html_header();
 
     // 新規登録SQL作成
     $sql =<<<EOS
-UPDATE `books`
+UPDATE `users`
 SET
-  `book_name` = :book_name,
-  `book_kana` = :book_kana,
-  `author_name` = :author_name,
-  `author_kana` = :author_kana,
+  `name` = :name,
+  `kana` = :kana,
+  `gender` = :gender,
+  `tel` = :tel,
   `updated` = NOW()
-WHERE `id` = :book_id
+WHERE `id` = :user_id
 EOS;
 
     // SQL実行準備
     $stmt = $conn->prepare($sql);
 
     // 登録するデータを設定
-    $stmt->bindValue(':book_name', $book_name);
-    $stmt->bindValue(':book_kana', $book_kana);
-    $stmt->bindValue(':author_name', $author_name);
-    $stmt->bindValue(':author_kana', $author_kana);
-    $stmt->bindValue(':book_id', $book_id);
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':kana', $kana);
+    $stmt->bindValue(':gender', $gender);
+    $stmt->bindValue(':tel', $tel);
+    $stmt->bindValue(':user_id', $user_id);
 
     // SQL実行
     $result = $stmt->execute();
@@ -81,7 +74,7 @@ EOS;
     }
     ?>
 
-        <a href="index.php" class="btn btn-default">図書データ一覧</a>
+        <a href="index.php" class="btn btn-default">利用者データ一覧</a>
 
         <?php
         // フッタ出力
