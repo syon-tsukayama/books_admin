@@ -7,22 +7,7 @@ output_html_header();
 ?>
 
     <body>
-<script>
-$(function()
-{
-    $.extend($.fn.datetimepicker.dates , {
-        ja: {
-            days: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日', '日曜日'],
-            daysShort: ['日', '月', '火', '水', '木', '金', '土', '日'],
-            daysMin: ['日', '月', '火', '水', '木', '金', '土', '日'],
-            months: ['1月', '2月', '3月', '4月', '5月', '6月','7月', '8月', '9月', '10月', '11月', '12月'],
-            monthsShort: ['1月', '2月', '3月', '4月', '5月', '6月','7月', '8月', '9月', '10月', '11月', '12月']
-        }
-    });
 
-    {$format}
-});
-</script>
 
         <div class="container">
             <h3>図書データ一覧</h3>
@@ -123,7 +108,12 @@ else
             <div class="form-group">
                 <label class="col-sm-2 control-label">登録日時</label>
                 <div class="col-xs-4">
-                    <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                	<div class="datetimepicker input-append date">
+                    	<input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                    	<span class="add-on">
+                    		<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                    	</span>
+                    </div>
                     ～
                     <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
                 </div>
