@@ -6,6 +6,7 @@
 
     <body>
     	<div class="container">
+    		<h3>図書データ一覧</h3>
 
 <?php
 
