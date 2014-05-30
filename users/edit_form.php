@@ -8,19 +8,19 @@ output_html_header();
 
     <body>
         <div class="container">
-            <h3>図書データ更新 編集画面</h3>
+            <h3>利用者データ更新 編集画面</h3>
 
         <?php
 
-        // 図書IDチェック
-        if(empty($_GET['book_id']))
+        // 利用者IDチェック
+        if(empty($_GET['user_id']))
         {
-            echo '図書が指定されていません';
+            echo '利用者が指定されていません';
             exit;
         }
 
         // 入力データの半角空白削除
-        $book_id = trim($_GET['book_id']);
+        $user_id = trim($_GET['user_id']);
 
         // データベース接続
         $conn = connect_database();
@@ -33,15 +33,15 @@ output_html_header();
 
         // 検索SQL作成
         $sql =<<<EOS
-SELECT `id`, `book_name`, `book_kana`, `author_name`, `author_kana` FROM `books`
-WHERE `id` = :book_id
+SELECT `id`, `name`, `kana`, `gender`, `tel` FROM `users`
+WHERE `id` = :user_id
 EOS;
 
         // SQL実行準備
         $stmt = $conn->prepare($sql);
 
         // 登録するデータを設定
-        $stmt->bindValue(':book_id', $book_id);
+        $stmt->bindValue(':user_id', $user_id);
 
         // SQL実行
         if($stmt->execute())
@@ -56,34 +56,34 @@ EOS;
         ?>
 
             <form action="edit.php" method="post" class="form-horizontal" role="form">
-                <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>" />
+                <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>" />
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名</label>
+                    <label class="col-sm-2 control-label">氏名</label>
                     <div class="col-xs-4">
-                        <input type="text" name="book_name" class="form-control" value="<?php echo $row['book_name']; ?>" />
+                        <input type="text" name="name" class="form-control" value="<?php echo $row['name']; ?>" />
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名カナ</label>
+                    <label class="col-sm-2 control-label">氏名カナ</label>
                     <div class="col-xs-4">
-                        <input type="text" name="book_kana" class="form-control" value="<?php echo $row['book_kana']; ?>" />
+                        <input type="text" name="kana" class="form-control" value="<?php echo $row['kana']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名</label>
+                    <label class="col-sm-2 control-label">性別</label>
                     <div class="col-xs-4">
-                        <input type="text" name="author_name" class="form-control" value="<?php echo $row['author_name']; ?>" />
+                        <input type="text" name="gender" class="form-control" value="<?php echo $row['gender']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名カナ</label>
+                    <label class="col-sm-2 control-label">電話番号</label>
                     <div class="col-xs-4">
-                        <input type="text" name="author_kana" class="form-control" value="<?php echo $row['author_kana']; ?>" />
+                        <input type="text" name="tel" class="form-control" value="<?php echo $row['tel']; ?>" />
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@ EOS;
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" value="更新" class="btn btn-primary" />
 
-                        <a href="index.php" class="btn btn-default">図書データ一覧</a>
+                        <a href="index.php" class="btn btn-default">利用者データ一覧</a>
                     </div>
                 </div>
 
