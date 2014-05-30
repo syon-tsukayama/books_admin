@@ -1,9 +1,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
+    	<div class="container">
+
 <?php
 
 // データベース接続情報設定
@@ -36,9 +39,9 @@ $stmt = $conn->prepare($sql);
 $result = $stmt->execute();
 
 ?>
-    <a href="add_form.php">図書データ新規登録フォーム</a>
+    <a href="add_form.php" class="btn btn-primary">図書データ新規登録フォーム</a>
 
-    <table border="1">
+    <table class="table table-striped table-hover">
         <tr>
             <th>ID</th>
             <th>図書名</th>
@@ -67,6 +70,7 @@ while($row = $stmt->fetch())
     <?php
 }
 ?>
-    </table>
+		    </table>
+        </div>
     </body>
 </html>
