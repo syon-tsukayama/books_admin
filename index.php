@@ -22,10 +22,7 @@ $conn = new PDO($dsn, $db_username, $db_password);
 if(!$conn)
 {
     echo '接続失敗';
-}
-else
-{
-    echo '接続成功';
+    exit;
 }
 
 // 検索SQL作成
