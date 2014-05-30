@@ -57,6 +57,11 @@ EOS;
     ?>
 
         <a href="index.php">図書データ一覧</a>
+
+        <?php
+        // フッタ出力
+        output_html_footer();
+        ?>
     </body>
 
 </html>

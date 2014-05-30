@@ -17,6 +17,18 @@ function output_html_header()
 }
 
 /**
+ * HTMLフッタ出力処理
+ */
+function output_html_footer()
+{
+?>
+        <script src="../js/jquery-1.11.1.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+<?php
+}
+
+
+/**
  * データベース接続処理
  */
 function connect_database()

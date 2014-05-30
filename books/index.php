@@ -73,7 +73,9 @@ while($row = $stmt->fetch())
 		    </table>
         </div>
 
-        <script src="js/jquery-1.11.1.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <?php
+        // フッタ出力
+        output_html_footer();
+        ?>
     </body>
 </html>
