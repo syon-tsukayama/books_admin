@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once('common.php');
+require_once('../common.php');
 // ヘッダ出力
 output_html_header();
 ?>
