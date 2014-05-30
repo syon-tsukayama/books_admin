@@ -62,8 +62,8 @@ while($row = $stmt->fetch())
             </a>
         </td>
         <td>
-            <a href="delete.php?book_id=<?php echo $book_id; ?>" class="btn btn-default">
-            	<i class="glyphicon glyphicon-trash"></i> 削除
+            <a href="delete.php?book_id=<?php echo $book_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
+                <i class="glyphicon glyphicon-trash"></i> 削除
             </a>
         </td>
     </tr>
