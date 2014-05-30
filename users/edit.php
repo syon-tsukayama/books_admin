@@ -70,7 +70,8 @@ EOS;
     }
     else
     {
-        echo '更新失敗';
+        echo '更新失敗<br />';
+        print_r($stmt->errorInfo());
     }
     ?>
 

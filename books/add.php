@@ -63,7 +63,8 @@ EOS;
     }
     else
     {
-        echo '登録失敗';
+        echo '登録失敗<br />';
+        print_r($stmt->errorInfo());
     }
     ?>
 

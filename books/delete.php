@@ -48,7 +48,8 @@ EOS;
     }
     else
     {
-        echo '削除失敗';
+        echo '削除失敗<br />';
+        print_r($stmt->errorInfo());
     }
     ?>
 

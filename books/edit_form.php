@@ -52,6 +52,7 @@ EOS;
         else
         {
             $row = array();
+	        print_r($stmt->errorInfo());
         }
         ?>
 
