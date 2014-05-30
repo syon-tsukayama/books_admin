@@ -10,7 +10,7 @@ output_html_header();
         <h3>利用者データ登録 登録処理</h3>
     <?php
 
-    // 図書名のチェック
+    // 氏名のチェック
     if(empty($_POST['name']))
     {
         echo '氏名が未入力です。';
