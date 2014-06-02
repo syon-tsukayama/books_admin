@@ -8,9 +8,10 @@ output_html_header();
 
     <body>
 
-
         <div class="container">
-            <h3>図書データ一覧</h3>
+            <div class="page-header">
+                <h3>図書データ一覧</h3>
+            </div>
 
 <?php
 
