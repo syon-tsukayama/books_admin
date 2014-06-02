@@ -309,10 +309,13 @@ $result = $stmt->execute();
         </tr>
 <?php
 
-// 検索結果取得
-while($row = $stmt->fetch())
+// SQL実行結果確認
+if($result)
 {
-    $book_id = $row['id'];
+    // 検索結果取得
+    while($row = $stmt->fetch())
+    {
+        $book_id = $row['id'];
 ?>
     <tr>
         <td><?php echo $book_id; ?></td>
@@ -334,6 +337,7 @@ while($row = $stmt->fetch())
         </td>
     </tr>
     <?php
+    }
 }
 ?>
             </table>

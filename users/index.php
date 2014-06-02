@@ -46,11 +46,13 @@ $result = $stmt->execute();
             <th>削除</th>
         </tr>
 <?php
-
-// 検索結果取得
-while($row = $stmt->fetch())
+// SQL実行結果確認
+if($result)
 {
-    $user_id = $row['id'];
+    // 検索結果取得
+    while($row = $stmt->fetch())
+    {
+        $user_id = $row['id'];
 ?>
     <tr>
         <td><?php echo $user_id; ?></td>
@@ -68,6 +70,7 @@ while($row = $stmt->fetch())
         </td>
     </tr>
     <?php
+    }
 }
 ?>
             </table>
