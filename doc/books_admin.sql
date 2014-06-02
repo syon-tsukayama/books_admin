@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `books` (
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='図書データテーブル' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='図書データテーブル' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
