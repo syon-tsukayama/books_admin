@@ -80,58 +80,58 @@ else
         <div class="col-md-12">
     	<form action="index.php" method="get" class="form-horizontal" role="form">
             <div class="form-group">
-                <label class="col-sm-2 control-label">図書名</label>
-                <div class="col-xs-4">
+                <label class="col-md-2 control-label">図書名</label>
+                <div class="col-md-4">
                     <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">図書名カナ</label>
-                <div class="col-xs-4">
+                <label class="col-md-2 control-label">図書名（カナ）</label>
+                <div class="col-md-4">
                     <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">著者名</label>
-                <div class="col-xs-4">
+                <label class="col-md-2 control-label">著者名</label>
+                <div class="col-md-4">
                     <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">著者名カナ</label>
-                <div class="col-xs-4">
+                <label class="col-md-2 control-label">著者名（カナ）</label>
+                <div class="col-md-4">
                     <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">登録日時</label>
-                <div class="col-xs-4">
+                <label class="col-md-2 control-label">登録日時（開始）</label>
+                <div class="col-md-4">
                     <div class="datetimepicker input-group date">
                         <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
-                    ～
-                    <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
+                </div>
+                <label class="col-md-2 control-label">登録日時（終了）</label>
+                <div class="col-md-4">
+                    <div class="datetimepicker input-group date">
+                        <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="検索" class="btn btn-primary" />
+                    <a href="add_form.php" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-file"></span> 図書データ新規登録フォーム
+                    </a>
                 </div>
             </div>
         </form>
-	</div>
 
-    <a href="add_form.php" class="btn btn-primary">
-        <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
-    </a>
 
         </div>
     </div>
