@@ -108,11 +108,11 @@ else
             <div class="form-group">
                 <label class="col-sm-2 control-label">登録日時</label>
                 <div class="col-xs-4">
-                	<div class="datetimepicker input-append date">
-                    	<input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
-                    	<span class="add-on">
-                    		<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    	</span>
+                    <div class="datetimepicker input-group date">
+                        <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                     ～
                     <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
