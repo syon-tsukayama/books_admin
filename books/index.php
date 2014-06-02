@@ -75,7 +75,8 @@ else
 }
 
 ?>
-	<div>
+	<div class="row">
+        <div class="col-md-12">
     	<form action="index.php" method="get" class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-sm-2 control-label">図書名</label>
@@ -130,6 +131,11 @@ else
     <a href="add_form.php" class="btn btn-primary">
         <i class="glyphicon glyphicon-file"></i> 図書データ新規登録フォーム
     </a>
+
+        </div>
+    </div>
+
+
 <?php
 // データベース接続
 $conn = connect_database();
@@ -295,6 +301,8 @@ if($is_search_option)
 // SQL実行
 $result = $stmt->execute();
 ?>
+    <div class="row">
+        <div class="col-md-12">
     <table class="table table-striped table-hover">
         <tr>
             <th>ID</th>
@@ -340,7 +348,9 @@ if($result)
     }
 }
 ?>
-            </table>
+                </table>
+                </div>
+            </div>
         </div>
 
         <?php
