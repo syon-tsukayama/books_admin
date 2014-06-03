@@ -77,10 +77,10 @@ EOS;
 
         <a href="index.php" class="btn btn-default">利用者データ一覧</a>
 
-        <?php
-        // フッタ出力
-        output_html_footer();
-        ?>
+<?php
+// フッタ出力
+output_html_footer();
+?>
     </body>
 
 </html>

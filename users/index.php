@@ -76,9 +76,9 @@ if($result)
             </table>
         </div>
 
-        <?php
-        // フッタ出力
-        output_html_footer();
-        ?>
+<?php
+// フッタ出力
+output_html_footer();
+?>
     </body>
 </html>
