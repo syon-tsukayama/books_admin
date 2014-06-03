@@ -60,12 +60,21 @@ EOS;
 
     if($result)
     {
-        echo '登録成功';
+?>
+            <div class="alert alert-success">
+                <strong>登録成功</strong>
+                #<?php echo $conn->lastInsertId(); ?>
+            </div>
+<?php
     }
     else
     {
-        echo '登録失敗<br />';
-        print_r($stmt->errorInfo());
+?>
+            <div class="alert alert-danger">
+                <strong>登録失敗</strong>
+                <?php echo $stmt->errorInfo(); ?>
+            </div>
+<?php
     }
 }
 ?>

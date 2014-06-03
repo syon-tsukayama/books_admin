@@ -67,12 +67,22 @@ EOS;
 
     if($result)
     {
-        echo '更新成功';
+?>
+            <div class="alert alert-success">
+                <strong>更新成功</strong>
+                #<?php echo $user_id; ?>
+            </div>
+<?php
     }
     else
     {
-        echo '更新失敗<br />';
-        print_r($stmt->errorInfo());
+?>
+            <div class="alert alert-danger">
+                <strong>更新失敗</strong>
+                #<?php echo $user_id; ?>
+                <?php echo $stmt->errorInfo(); ?>
+            </div>
+<?php
     }
 }
 ?>

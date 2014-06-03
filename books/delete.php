@@ -47,12 +47,22 @@ EOS;
 
     if($result)
     {
-        echo '削除成功';
+?>
+            <div class="alert alert-success">
+                <strong>削除成功</strong>
+                #<?php echo $book_id; ?>
+            </div>
+<?php
     }
     else
     {
-        echo '削除失敗<br />';
-        print_r($stmt->errorInfo());
+?>
+            <div class="alert alert-danger">
+                <strong>削除失敗</strong>
+                #<?php echo $book_id; ?>
+                <?php echo $stmt->errorInfo(); ?>
+            </div>
+<?php
     }
 }
 ?>
