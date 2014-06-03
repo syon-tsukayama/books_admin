@@ -107,6 +107,9 @@ if(is_array($_genders))
                     <label class="col-md-2 control-label">電話番号</label>
                     <div class="col-md-4">
                         <input type="text" name="tel" class="form-control" value="<?php echo $row['tel']; ?>" />
+                        <span class="help-block">
+                            電話番号は半角数字と半角ハイフン「-」で入力してください。
+                        </span>
                     </div>
                 </div>
 
