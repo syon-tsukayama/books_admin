@@ -3,6 +3,9 @@
  * 共通機能
  */
 
+// 性別チェックのための設定
+$_genders = array('男', '女');
+
 /**
  * HTMLヘッダ出力処理
  */
@@ -17,6 +20,7 @@ function output_html_header()
     </head>
 <?php
 }
+
 
 /**
  * HTMLフッタ出力処理
@@ -87,4 +91,36 @@ function connect_database()
     return $conn;
 }
 
+
+/**
+ * 入力チェック_性別
+ *
+ * @param string
+ *
+ * @return bool
+ */
+function input_check_gender($value)
+{
+    global $_genders;
+
+    if(empty($value) || in_array($value, $_genders))
+    {
+        // 未入力 or 性別チェックの配列に含まれる値の場合、問題なしとする。
+        // 未入力をさせたくない場合は、別途、empty()のチェックを追記する。
+        $return_value = true;
+    }
+    else
+    {
+        // エラーメッセージ表示
+        $return_value = false;
+?>
+            <div class="alert alert-warning">
+                <strong>なぞの性別です。</strong>
+                <?php echo $value; ?>
+            </div>
+<?php
+    }
+
+    return $return_value;
+}
 

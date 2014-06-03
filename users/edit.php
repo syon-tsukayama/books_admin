@@ -27,6 +27,12 @@ if(empty($_POST['name']))
     exit;
 }
 
+// 性別チェック
+if(!input_check_gender($_POST['gender']))
+{
+    exit;
+}
+
 // 入力データの半角空白削除
 $user_id = trim($_POST['user_id']);
 $name = trim($_POST['name']);
