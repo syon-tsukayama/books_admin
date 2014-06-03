@@ -8,7 +8,9 @@ output_html_header();
 
     <body>
         <div class="container">
-            <h3>図書データ登録 入力画面</h3>
+            <div class="page-header">
+                <h3>図書データ登録 入力画面</h3>
+            </div>
 
             <form action="add.php" method="post" class="form-horizontal" role="form">
                 <div class="form-group">

@@ -7,7 +7,10 @@ output_html_header();
 ?>
 
     <body>
-        <h3>図書データ編集 更新処理</h3>
+        <div class="container">
+            <div class="page-header">
+                <h3>図書データ編集 更新処理</h3>
+            </div>
     <?php
 
     // 図書IDチェック
@@ -82,7 +85,8 @@ EOS;
     }
     ?>
 
-        <a href="index.php" class="btn btn-default">図書データ一覧</a>
+            <a href="index.php" class="btn btn-default">図書データ一覧</a>
+        </div>
 
 <?php
 // フッタ出力

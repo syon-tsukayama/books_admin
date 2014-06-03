@@ -8,7 +8,9 @@ output_html_header();
 
     <body>
         <div class="container">
-            <h3>利用者データ更新 編集画面</h3>
+            <div class="page-header">
+                <h3>利用者データ更新 編集画面</h3>
+            </div>
 
         <?php
 

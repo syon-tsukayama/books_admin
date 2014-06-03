@@ -7,7 +7,10 @@ output_html_header();
 ?>
 
     <body>
-        <h3>利用者データ削除 削除処理</h3>
+        <div class="container">
+            <div class="page-header">
+                <h3>利用者データ削除 削除処理</h3>
+            </div>
     <?php
 
     // 利用者IDチェック
@@ -53,7 +56,8 @@ EOS;
     }
     ?>
 
-        <a href="index.php" class="btn btn-default">利用者データ一覧</a>
+            <a href="index.php" class="btn btn-default">利用者データ一覧</a>
+        </div>
 
 <?php
 // フッタ出力
