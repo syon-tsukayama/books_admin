@@ -62,36 +62,36 @@ EOS;
                 <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>" />
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">図書名</label>
+                    <div class="col-md-4">
                         <input type="text" name="book_name" class="form-control" value="<?php echo $row['book_name']; ?>" />
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">図書名カナ</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">図書名カナ</label>
+                    <div class="col-md-4">
                         <input type="text" name="book_kana" class="form-control" value="<?php echo $row['book_kana']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">著者名</label>
+                    <div class="col-md-4">
                         <input type="text" name="author_name" class="form-control" value="<?php echo $row['author_name']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">著者名カナ</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">著者名カナ</label>
+                    <div class="col-md-4">
                         <input type="text" name="author_kana" class="form-control" value="<?php echo $row['author_kana']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="更新" class="btn btn-primary" />
 
                         <a href="index.php" class="btn btn-default">図書データ一覧</a>

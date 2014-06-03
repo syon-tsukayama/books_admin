@@ -62,36 +62,36 @@ EOS;
                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>" />
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">氏名</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">氏名</label>
+                    <div class="col-md-4">
                         <input type="text" name="name" class="form-control" value="<?php echo $row['name']; ?>" />
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">氏名カナ</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">氏名カナ</label>
+                    <div class="col-md-4">
                         <input type="text" name="kana" class="form-control" value="<?php echo $row['kana']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">性別</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">性別</label>
+                    <div class="col-md-4">
                         <input type="text" name="gender" class="form-control" value="<?php echo $row['gender']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">電話番号</label>
-                    <div class="col-xs-4">
+                    <label class="col-md-2 control-label">電話番号</label>
+                    <div class="col-md-4">
                         <input type="text" name="tel" class="form-control" value="<?php echo $row['tel']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="更新" class="btn btn-primary" />
 
                         <a href="index.php" class="btn btn-default">利用者データ一覧</a>
