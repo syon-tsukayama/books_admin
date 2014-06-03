@@ -70,9 +70,7 @@ EOS;
     $stmt->bindValue(':book_id', $book_id);
 
     // SQL実行
-    $result = $stmt->execute();
-
-    if($result)
+    if($stmt->execute())
     {
 ?>
             <div class="alert alert-success">

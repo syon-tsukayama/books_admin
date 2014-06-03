@@ -30,7 +30,6 @@ $conn = connect_database();
 // データベース接続確認
 if(!is_null($conn))
 {
-
     // 新規登録SQL作成
     $sql =<<<EOS
 DELETE FROM `books` WHERE `id` = :book_id
@@ -43,9 +42,7 @@ EOS;
     $stmt->bindValue(':book_id', $book_id);
 
     // SQL実行
-    $result = $stmt->execute();
-
-    if($result)
+    if($stmt->execute())
     {
 ?>
             <div class="alert alert-success">

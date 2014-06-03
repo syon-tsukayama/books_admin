@@ -41,9 +41,7 @@ EOS;
     $stmt->bindValue(':user_id', $user_id);
 
     // SQL実行
-    $result = $stmt->execute();
-
-    if($result)
+    if($stmt->execute())
     {
 ?>
             <div class="alert alert-success">

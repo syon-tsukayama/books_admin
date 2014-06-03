@@ -56,9 +56,7 @@ EOS;
     $stmt->bindValue(':author_kana', $author_kana);
 
     // SQL実行
-    $result = $stmt->execute();
-
-    if($result)
+    if($stmt->execute())
     {
 ?>
             <div class="alert alert-success">
