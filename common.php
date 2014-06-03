@@ -57,12 +57,22 @@ function connect_database()
     $db_username = 'root';
     $db_password = '';
 
-    // データベース接続
-    $conn = new PDO($dsn, $db_username, $db_password);
-
-    if(!$conn)
+    // データベース接続失敗時に「例外」が発生するので、
+    // 「例外」発生時にエラーメッセージを表示する
+    try
     {
-        echo '接続失敗';
+        // データベース接続
+        $conn = new PDO($dsn, $db_username, $db_password);
+
+        if($conn == null)
+        {
+            echo '接続失敗';
+        }
+    }
+    catch(PDOException $e)
+    {
+        // エラーメッセージ表示
+        echo '接続失敗：'.$e->getMessage();
     }
 
     return $conn;
