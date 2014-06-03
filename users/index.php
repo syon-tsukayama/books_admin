@@ -35,18 +35,21 @@ $stmt = $conn->prepare($sql);
 $result = $stmt->execute();
 
 ?>
-    <a href="add_form.php" class="btn btn-primary">
-        <span class="glyphicon glyphicon-file"></span> 利用者データ新規登録フォーム
-    </a>
+            <a href="add_form.php" class="btn btn-primary">
+                <span class="glyphicon glyphicon-file"></span> 利用者データ新規登録フォーム
+            </a>
 
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>ID</th>
-            <th>氏名</th>
-            <th>電話番号</th>
-            <th>編集</th>
-            <th>削除</th>
-        </tr>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>氏名</th>
+                            <th>電話番号</th>
+                            <th>編集</th>
+                            <th>削除</th>
+                        </tr>
 <?php
 // SQL実行結果確認
 if($result)
@@ -56,26 +59,29 @@ if($result)
     {
         $user_id = $row['id'];
 ?>
-    <tr>
-        <td><?php echo $user_id; ?></td>
-        <td><?php echo $row['name']; ?></td>
-        <td><?php echo $row['tel']; ?></td>
-        <td>
-            <a href="edit_form.php?user_id=<?php echo $user_id; ?>" class="btn btn-default">
-                <span class="glyphicon glyphicon-edit"></span> 編集
-            </a>
-        </td>
-        <td>
-            <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
-                <span class="glyphicon glyphicon-trash"></span> 削除
-            </a>
-        </td>
-    </tr>
-    <?php
+                        <tr>
+                            <td><?php echo $user_id; ?></td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['tel']; ?></td>
+                            <td>
+                                <a href="edit_form.php?user_id=<?php echo $user_id; ?>" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-edit"></span> 編集
+                                </a>
+                            </td>
+                            <td>
+                                <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
+                                    <span class="glyphicon glyphicon-trash"></span> 削除
+                                </a>
+                            </td>
+                        </tr>
+<?php
     }
 }
 ?>
-            </table>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
 <?php
