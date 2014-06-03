@@ -36,7 +36,7 @@ $result = $stmt->execute();
 
 ?>
     <a href="add_form.php" class="btn btn-primary">
-        <i class="glyphicon glyphicon-file"></i> 利用者データ新規登録フォーム
+        <span class="glyphicon glyphicon-file"></span> 利用者データ新規登録フォーム
     </a>
 
     <table class="table table-striped table-hover">
@@ -62,12 +62,12 @@ if($result)
         <td><?php echo $row['tel']; ?></td>
         <td>
             <a href="edit_form.php?user_id=<?php echo $user_id; ?>" class="btn btn-default">
-                <i class="glyphicon glyphicon-edit"></i> 編集
+                <span class="glyphicon glyphicon-edit"></span> 編集
             </a>
         </td>
         <td>
             <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
-                <i class="glyphicon glyphicon-trash"></i> 削除
+                <span class="glyphicon glyphicon-trash"></span> 削除
             </a>
         </td>
     </tr>
