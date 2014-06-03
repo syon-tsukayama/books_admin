@@ -17,22 +17,19 @@ output_html_header();
 // データベース接続
 $conn = connect_database();
 
-if(!$conn)
+// データベース接続確認
+if(!is_null($conn))
 {
-    echo '接続失敗';
-    exit;
-}
-
-// 検索SQL作成
-$sql =<<<EOS
+    // 検索SQL作成
+    $sql =<<<EOS
 SELECT `id`, `name`, `tel` FROM `users`
 EOS;
 
-// SQL実行準備
-$stmt = $conn->prepare($sql);
+    // SQL実行準備
+    $stmt = $conn->prepare($sql);
 
-// SQL実行
-$result = $stmt->execute();
+    // SQL実行
+    $result = $stmt->execute();
 
 ?>
             <a href="add_form.php" class="btn btn-primary">
@@ -51,13 +48,13 @@ $result = $stmt->execute();
                             <th>削除</th>
                         </tr>
 <?php
-// SQL実行結果確認
-if($result)
-{
-    // 検索結果取得
-    while($row = $stmt->fetch())
+    // SQL実行結果確認
+    if($result)
     {
-        $user_id = $row['id'];
+        // 検索結果取得
+        while($row = $stmt->fetch())
+        {
+            $user_id = $row['id'];
 ?>
                         <tr>
                             <td><?php echo $user_id; ?></td>
@@ -75,13 +72,15 @@ if($result)
                             </td>
                         </tr>
 <?php
+        }
     }
-}
 ?>
                     </table>
                 </div>
             </div>
-
+<?php
+}
+?>
         </div>
 
 <?php

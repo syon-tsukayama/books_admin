@@ -22,63 +22,63 @@ $is_search_option = false;
 // 検索条件取得
 if(isset($_GET['book_name']))
 {
-	$book_name = trim($_GET['book_name']);
-	$is_search_option = true;
+    $book_name = trim($_GET['book_name']);
+    $is_search_option = true;
 }
 else
 {
-	$book_name = '';
+    $book_name = '';
 }
 if(isset($_GET['book_kana']))
 {
-	$book_kana = trim($_GET['book_kana']);
-	$is_search_option = true;
+    $book_kana = trim($_GET['book_kana']);
+    $is_search_option = true;
 }
 else
 {
-	$book_kana = '';
+    $book_kana = '';
 }
 if(isset($_GET['author_name']))
 {
-	$author_name = trim($_GET['author_name']);
-	$is_search_option = true;
+    $author_name = trim($_GET['author_name']);
+    $is_search_option = true;
 }
 else
 {
-	$author_name = '';
+    $author_name = '';
 }
 if(isset($_GET['author_kana']))
 {
-	$author_kana = trim($_GET['author_kana']);
-	$is_search_option = true;
+    $author_kana = trim($_GET['author_kana']);
+    $is_search_option = true;
 }
 else
 {
-	$author_kana = '';
+    $author_kana = '';
 }
 if(isset($_GET['created_from']))
 {
-	$created_from = trim($_GET['created_from']);
-	$is_search_option = true;
+    $created_from = trim($_GET['created_from']);
+    $is_search_option = true;
 }
 else
 {
-	$created_from = '';
+    $created_from = '';
 }
 if(isset($_GET['created_to']))
 {
-	$created_to = trim($_GET['created_to']);
-	$is_search_option = true;
+    $created_to = trim($_GET['created_to']);
+    $is_search_option = true;
 }
 else
 {
-	$created_to = '';
+    $created_to = '';
 }
 
 ?>
-	<div class="row">
+    <div class="row">
         <div class="col-md-12">
-    	<form action="index.php" method="get" class="form-horizontal" role="form">
+        <form action="index.php" method="get" class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-md-2 control-label">図書名</label>
                 <div class="col-md-4">
@@ -141,166 +141,163 @@ else
 // データベース接続
 $conn = connect_database();
 
-if(!$conn)
+// データベース接続確認
+if(!is_null($conn))
 {
-    echo '接続失敗';
-    exit;
-}
-
-// 検索SQL作成
-$sql =<<<EOS
+    // 検索SQL作成
+    $sql =<<<EOS
 SELECT
 `id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`
 FROM `books`
 EOS;
 
-// SQL条件句作成
-if($is_search_option)
-{
-	$where = '';
+    // SQL条件句作成
+    if($is_search_option)
+    {
+        $where = '';
 
-	if(!empty($book_name))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($book_name))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 book_name LIKE :book_name
 EOS;
-	}
+        }
 
-	if(!empty($book_kana))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($book_kana))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 book_kana LIKE :book_kana
 EOS;
-	}
+        }
 
-	if(!empty($author_name))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($author_name))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 author_name LIKE :author_name
 EOS;
-	}
+        }
 
-	if(!empty($author_kana))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($author_kana))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 author_kana LIKE :author_kana
 EOS;
-	}
+        }
 
-	if(!empty($created_from))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($created_from))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 created >= :created_from
 EOS;
-	}
+        }
 
-	if(!empty($created_to))
-	{
-		if(empty($where))
-		{
-			$where .= ' WHERE ';
-		}
-		else
-		{
-			$where .= ' AND ';
-		}
+        if(!empty($created_to))
+        {
+            if(empty($where))
+            {
+                $where .= ' WHERE ';
+            }
+            else
+            {
+                $where .= ' AND ';
+            }
 
-		$where .=<<<EOS
+            $where .=<<<EOS
 created <= :created_to
 EOS;
-	}
+        }
 
-	if(!empty($where))
-	{
-		$sql .= $where;
-	}
-}
+        if(!empty($where))
+        {
+            $sql .= $where;
+        }
+    }
 
-// SQL実行準備
-$stmt = $conn->prepare($sql);
+    // SQL実行準備
+    $stmt = $conn->prepare($sql);
 
 
-// SQL条件句作成
-if($is_search_option)
-{
-	if(!empty($book_name))
-	{
-    	$stmt->bindValue(':book_name', '%'.$book_name.'%');
-	}
+    // SQL条件句作成
+    if($is_search_option)
+    {
+        if(!empty($book_name))
+        {
+            $stmt->bindValue(':book_name', '%'.$book_name.'%');
+        }
 
-	if(!empty($book_kana))
-	{
-    	$stmt->bindValue(':book_kana', $book_kana.'%');
-	}
+        if(!empty($book_kana))
+        {
+            $stmt->bindValue(':book_kana', $book_kana.'%');
+        }
 
-	if(!empty($author_name))
-	{
-    	$stmt->bindValue(':author_name', $author_name.'%');
-	}
+        if(!empty($author_name))
+        {
+            $stmt->bindValue(':author_name', $author_name.'%');
+        }
 
-	if(!empty($author_kana))
-	{
-    	$stmt->bindValue(':author_kana', $author_kana.'%');
-	}
+        if(!empty($author_kana))
+        {
+            $stmt->bindValue(':author_kana', $author_kana.'%');
+        }
 
-	if(!empty($created_from))
-	{
-    	$stmt->bindValue(':created_from', $created_from);
-	}
+        if(!empty($created_from))
+        {
+            $stmt->bindValue(':created_from', $created_from);
+        }
 
-	if(!empty($created_to))
-	{
-    	$stmt->bindValue(':created_to', $created_to);
-	}
-}
+        if(!empty($created_to))
+        {
+            $stmt->bindValue(':created_to', $created_to);
+        }
+    }
 
-// SQL実行
-$result = $stmt->execute();
+    // SQL実行
+    $result = $stmt->execute();
 ?>
             <div class="row">
                 <div class="col-md-12">
@@ -318,13 +315,13 @@ $result = $stmt->execute();
                         </tr>
 <?php
 
-// SQL実行結果確認
-if($result)
-{
-    // 検索結果取得
-    while($row = $stmt->fetch())
+    // SQL実行結果確認
+    if($result)
     {
-        $book_id = $row['id'];
+        // 検索結果取得
+        while($row = $stmt->fetch())
+        {
+            $book_id = $row['id'];
 ?>
                         <tr>
                             <td><?php echo $book_id; ?></td>
@@ -346,12 +343,15 @@ if($result)
                             </td>
                         </tr>
     <?php
+        }
     }
-}
 ?>
                     </table>
                 </div>
             </div>
+<?php
+}
+?>
         </div>
 
 <?php

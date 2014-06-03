@@ -11,26 +11,24 @@ output_html_header();
             <div class="page-header">
                 <h3>利用者データ削除 削除処理</h3>
             </div>
-    <?php
+<?php
 
-    // 利用者IDチェック
-    if(empty($_GET['user_id']))
-    {
-        echo '利用者が指定されていません';
-        exit;
-    }
+// 利用者IDチェック
+if(empty($_GET['user_id']))
+{
+    echo '利用者が指定されていません';
+    exit;
+}
 
-    // 入力データの半角空白削除
-    $user_id = trim($_GET['user_id']);
+// 入力データの半角空白削除
+$user_id = trim($_GET['user_id']);
 
-    // データベース接続
-    $conn = connect_database();
+// データベース接続
+$conn = connect_database();
 
-    if(!$conn)
-    {
-        echo '接続失敗';
-    }
-
+// データベース接続確認
+if(!is_null($conn))
+{
     // 新規登録SQL作成
     $sql =<<<EOS
 DELETE FROM `users` WHERE `id` = :user_id
@@ -54,7 +52,8 @@ EOS;
         echo '削除失敗<br />';
         print_r($stmt->errorInfo());
     }
-    ?>
+}
+?>
 
             <a href="index.php" class="btn btn-default">利用者データ一覧</a>
         </div>

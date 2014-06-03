@@ -11,37 +11,35 @@ output_html_header();
             <div class="page-header">
                 <h3>利用者データ編集 更新処理</h3>
             </div>
-    <?php
+<?php
 
-    // 利用者IDチェック
-    if(empty($_POST['user_id']))
-    {
-        echo '利用者が指定されていません';
-        exit;
-    }
+// 利用者IDチェック
+if(empty($_POST['user_id']))
+{
+    echo '利用者が指定されていません';
+    exit;
+}
 
-    // 氏名のチェック
-    if(empty($_POST['name']))
-    {
-        echo '氏名が未入力です。';
-        exit;
-    }
+// 氏名のチェック
+if(empty($_POST['name']))
+{
+    echo '氏名が未入力です。';
+    exit;
+}
 
-    // 入力データの半角空白削除
-    $user_id = trim($_POST['user_id']);
-    $name = trim($_POST['name']);
-    $kana = trim($_POST['kana']);
-    $gender = trim($_POST['gender']);
-    $tel = trim($_POST['tel']);
+// 入力データの半角空白削除
+$user_id = trim($_POST['user_id']);
+$name = trim($_POST['name']);
+$kana = trim($_POST['kana']);
+$gender = trim($_POST['gender']);
+$tel = trim($_POST['tel']);
 
-    // データベース接続
-    $conn = connect_database();
+// データベース接続
+$conn = connect_database();
 
-    if(!$conn)
-    {
-        echo '接続失敗';
-    }
-
+// データベース接続確認
+if(!is_null($conn))
+{
     // 新規登録SQL作成
     $sql =<<<EOS
 UPDATE `users`
@@ -76,7 +74,8 @@ EOS;
         echo '更新失敗<br />';
         print_r($stmt->errorInfo());
     }
-    ?>
+}
+?>
 
             <a href="index.php" class="btn btn-default">利用者データ一覧</a>
         </div>

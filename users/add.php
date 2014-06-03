@@ -11,37 +11,35 @@ output_html_header();
             <div class="page-header">
                 <h3>利用者データ登録 登録処理</h3>
             </div>
-    <?php
+<?php
 
-    // 氏名のチェック
-    if(empty($_POST['name']))
-    {
-        echo '氏名が未入力です。';
-        exit;
-    }
+// 氏名のチェック
+if(empty($_POST['name']))
+{
+    echo '氏名が未入力です。';
+    exit;
+}
 
-    // 性別チェック
-    $genders = array('男', '女');
-    if(!empty($_POST['gender']) && !in_array($_POST['gender'], $genders))
-    {
-        echo 'なぞの性別です。';
-        exit;
-    }
+// 性別チェック
+$genders = array('男', '女');
+if(!empty($_POST['gender']) && !in_array($_POST['gender'], $genders))
+{
+    echo 'なぞの性別です。';
+    exit;
+}
 
-    // 入力データの半角空白削除
-    $name = trim($_POST['name']);
-    $kana = trim($_POST['kana']);
-    $gender = trim($_POST['gender']);
-    $tel = trim($_POST['tel']);
+// 入力データの半角空白削除
+$name = trim($_POST['name']);
+$kana = trim($_POST['kana']);
+$gender = trim($_POST['gender']);
+$tel = trim($_POST['tel']);
 
-    // データベース接続
-    $conn = connect_database();
+// データベース接続
+$conn = connect_database();
 
-    if(!$conn)
-    {
-        echo '接続失敗';
-    }
-
+// データベース接続確認
+if(!is_null($conn))
+{
     // 新規登録SQL作成
     $sql =<<<EOS
 INSERT INTO `users`
@@ -70,7 +68,8 @@ EOS;
         echo '登録失敗<br />';
         print_r($stmt->errorInfo());
     }
-    ?>
+}
+?>
 
             <a href="index.php" class="btn btn-default">利用者データ一覧</a>
         </div>

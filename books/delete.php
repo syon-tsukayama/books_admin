@@ -12,25 +12,24 @@ output_html_header();
                 <h3>図書データ削除 削除処理</h3>
             </div>
 
-    <?php
+<?php
 
-    // 図書IDチェック
-    if(empty($_GET['book_id']))
-    {
-        echo '図書が指定されていません';
-        exit;
-    }
+// 図書IDチェック
+if(empty($_GET['book_id']))
+{
+    echo '図書が指定されていません';
+    exit;
+}
 
-    // 入力データの半角空白削除
-    $book_id = trim($_GET['book_id']);
+// 入力データの半角空白削除
+$book_id = trim($_GET['book_id']);
 
-    // データベース接続
-    $conn = connect_database();
+// データベース接続
+$conn = connect_database();
 
-    if(!$conn)
-    {
-        echo '接続失敗';
-    }
+// データベース接続確認
+if(!is_null($conn))
+{
 
     // 新規登録SQL作成
     $sql =<<<EOS
@@ -55,7 +54,8 @@ EOS;
         echo '削除失敗<br />';
         print_r($stmt->errorInfo());
     }
-    ?>
+}
+?>
 
             <a href="index.php" class="btn btn-default">図書データ一覧</a>
         </div>
