@@ -66,13 +66,22 @@ function connect_database()
 
         if($conn == null)
         {
-            echo '接続失敗';
+?>
+            <div class="alert alert-danger">
+                <strong>接続失敗</strong>
+            </div>
+<?php
         }
     }
     catch(PDOException $e)
     {
         // エラーメッセージ表示
-        echo '接続失敗：'.$e->getMessage();
+?>
+            <div class="alert alert-danger">
+                <strong>接続失敗</strong>
+                <?php echo $e->getMessage(); ?>
+            </div>
+<?php
     }
 
     return $conn;
