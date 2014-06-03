@@ -30,7 +30,22 @@ output_html_header();
                 <div class="form-group">
                     <label class="col-md-2 control-label">性別</label>
                     <div class="col-md-4">
-                        <input type="text" name="gender" class="form-control " />
+<?php
+if(is_array($_genders))
+{
+    foreach($_genders as $gender)
+    {
+?>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" value="<?php echo $gender; ?>">
+                                <?php echo $gender; ?>
+                            </label>
+                        </div>
+<?php
+    }
+}
+?>
                     </div>
                 </div>
 
