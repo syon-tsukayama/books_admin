@@ -15,135 +15,135 @@ output_html_header();
 
 <?php
 
-
-// 検索条件有無フラグ
-$is_search_option = false;
-
-// 検索条件取得
-if(isset($_GET['book_name']))
-{
-    $book_name = trim($_GET['book_name']);
-    $is_search_option = true;
-}
-else
-{
-    $book_name = '';
-}
-if(isset($_GET['book_kana']))
-{
-    $book_kana = trim($_GET['book_kana']);
-    $is_search_option = true;
-}
-else
-{
-    $book_kana = '';
-}
-if(isset($_GET['author_name']))
-{
-    $author_name = trim($_GET['author_name']);
-    $is_search_option = true;
-}
-else
-{
-    $author_name = '';
-}
-if(isset($_GET['author_kana']))
-{
-    $author_kana = trim($_GET['author_kana']);
-    $is_search_option = true;
-}
-else
-{
-    $author_kana = '';
-}
-if(isset($_GET['created_from']))
-{
-    $created_from = trim($_GET['created_from']);
-    $is_search_option = true;
-}
-else
-{
-    $created_from = '';
-}
-if(isset($_GET['created_to']))
-{
-    $created_to = trim($_GET['created_to']);
-    $is_search_option = true;
-}
-else
-{
-    $created_to = '';
-}
-
-?>
-    <div class="row">
-        <div class="col-md-12">
-        <form action="index.php" method="get" class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-md-2 control-label">図書名</label>
-                <div class="col-md-4">
-                    <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
-                </div>
-                <label class="col-md-2 control-label">図書名（カナ）</label>
-                <div class="col-md-4">
-                    <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-2 control-label">著者名</label>
-                <div class="col-md-4">
-                    <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
-                </div>
-                <label class="col-md-2 control-label">著者名（カナ）</label>
-                <div class="col-md-4">
-                    <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-2 control-label">登録日時（開始）</label>
-                <div class="col-md-4">
-                    <div class="datetimepicker input-group date">
-                        <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-                <label class="col-md-2 control-label">登録日時（終了）</label>
-                <div class="col-md-4">
-                    <div class="datetimepicker input-group date">
-                        <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="検索" class="btn btn-primary" />
-                    <a href="add_form.php" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-file"></span> 図書データ新規登録フォーム
-                    </a>
-                </div>
-            </div>
-        </form>
-
-
-        </div>
-    </div>
-
-
-<?php
 // データベース接続
 $conn = connect_database();
 
 // データベース接続確認
 if(!is_null($conn))
 {
+    // 検索条件有無フラグ
+    $is_search_option = false;
+
+    // 検索条件取得
+    if(isset($_GET['book_name']))
+    {
+        $book_name = trim($_GET['book_name']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $book_name = '';
+    }
+    if(isset($_GET['book_kana']))
+    {
+        $book_kana = trim($_GET['book_kana']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $book_kana = '';
+    }
+    if(isset($_GET['author_name']))
+    {
+        $author_name = trim($_GET['author_name']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $author_name = '';
+    }
+    if(isset($_GET['author_kana']))
+    {
+        $author_kana = trim($_GET['author_kana']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $author_kana = '';
+    }
+    if(isset($_GET['created_from']))
+    {
+        $created_from = trim($_GET['created_from']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $created_from = '';
+    }
+    if(isset($_GET['created_to']))
+    {
+        $created_to = trim($_GET['created_to']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $created_to = '';
+    }
+
+?>
+    <div class="row">
+        <div class="col-md-12">
+
+            <form action="index.php" method="get" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">図書名</label>
+                    <div class="col-md-4">
+                        <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
+                    </div>
+                    <label class="col-md-2 control-label">図書名（カナ）</label>
+                    <div class="col-md-4">
+                        <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">著者名</label>
+                    <div class="col-md-4">
+                        <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
+                    </div>
+                    <label class="col-md-2 control-label">著者名（カナ）</label>
+                    <div class="col-md-4">
+                        <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">登録日時（開始）</label>
+                    <div class="col-md-4">
+                        <div class="datetimepicker input-group date">
+                            <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <label class="col-md-2 control-label">登録日時（終了）</label>
+                    <div class="col-md-4">
+                        <div class="datetimepicker input-group date">
+                            <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="検索" class="btn btn-primary" />
+                        <a href="add_form.php" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-file"></span> 図書データ新規登録フォーム
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+<?php
+
     // 検索SQL作成
     $sql =<<<EOS
 SELECT
