@@ -81,8 +81,9 @@ if(!is_null($conn))
     }
 
 ?>
-    <div class="row">
-        <div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">検索</div>
+        <div class="panel-body">
 
             <form action="index.php" method="get" class="form-horizontal" role="form">
                 <div class="form-group">
