@@ -154,107 +154,41 @@ EOS;
     // SQL条件句作成
     if($is_search_option)
     {
-        $where = '';
+        $wheres = array();
 
         if(!empty($book_name))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-book_name LIKE :book_name
-EOS;
+            $wheres[] = 'book_name LIKE :book_name';
         }
 
         if(!empty($book_kana))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-book_kana LIKE :book_kana
-EOS;
+            $wheres[] = 'book_kana LIKE :book_kana';
         }
 
         if(!empty($author_name))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-author_name LIKE :author_name
-EOS;
+            $wheres[] = 'author_name LIKE :author_name';
         }
 
         if(!empty($author_kana))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-author_kana LIKE :author_kana
-EOS;
+            $wheres[] = 'author_kana LIKE :author_kana';
         }
 
         if(!empty($created_from))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-created >= :created_from
-EOS;
+            $wheres[] = 'created >= :created_from';
         }
 
         if(!empty($created_to))
         {
-            if(empty($where))
-            {
-                $where .= ' WHERE ';
-            }
-            else
-            {
-                $where .= ' AND ';
-            }
-
-            $where .=<<<EOS
-created <= :created_to
-EOS;
+            $wheres[] = 'created <= :created_to';
         }
 
-        if(!empty($where))
+        if(!empty($wheres))
         {
-            $sql .= $where;
+            $sql .= ' WHERE '.implode(' AND ', $wheres);
         }
     }
 
@@ -262,7 +196,7 @@ EOS;
     $stmt = $conn->prepare($sql);
 
 
-    // SQL条件句作成
+    // SQL条件値設定
     if($is_search_option)
     {
         if(!empty($book_name))
