@@ -73,6 +73,10 @@ function output_html_navbar()
     global $_base_url;
     global $_navbar_urls;
 
+    // 実行中のphpプログラム取得
+    // $_SERVER['SCRIPT_NAME']: phpファイル名
+    // script_dir: phpファイルがあるディレクトリ名
+    $script_dir = dirname($_SERVER['SCRIPT_NAME']);
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -84,8 +88,18 @@ function output_html_navbar()
 <?php
     foreach($_navbar_urls as $title => $url)
     {
+        // 実行中のphpプログラムのディレクトリとリンク用URL比較
+        // 一致する場合は、<li>タグにclass="active"を設定
+        if(strstr($url, $script_dir))
+        {
+            $class_active = ' class="active"';
+        }
+        else
+        {
+            $class_active = '';
+        }
 ?>
-                        <li>
+                        <li<?php echo $class_active; ?>>
                             <a href="http://<?php echo $url; ?>"><?php echo $title; ?></a>
                         </li>
 <?php
