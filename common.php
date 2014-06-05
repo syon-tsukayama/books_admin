@@ -15,6 +15,9 @@ $_url_dirs = array(
 // 性別チェックのための設定
 $_genders = array('男', '女');
 
+// 実行中のphpプログラムのディレクトリ名取得
+$_script_dir_name = basename(dirname($_SERVER['SCRIPT_NAME']));
+
 /**
  * HTMLヘッダ出力処理
  */
@@ -74,11 +77,8 @@ function output_html_navbar()
 {
     global $_base_url;
     global $_url_dirs;
+    global $_script_dir_name;
 
-    // 実行中のphpプログラム取得
-    // $_SERVER['SCRIPT_NAME']: phpファイル名
-    // script_dir: phpファイルがあるディレクトリ名
-    $script_dir = dirname($_SERVER['SCRIPT_NAME']);
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -90,9 +90,9 @@ function output_html_navbar()
 <?php
     foreach($_url_dirs as $dir_name => $title)
     {
-        // 実行中のphpプログラムのURLとディレクトリ名比較
+        // 実行中のphpプログラムのディレクトリ比較
         // 一致する場合は、<li>タグにclass="active"を設定
-        if(preg_match('/'.$dir_name.'$/', $script_dir))
+        if(strcasecmp($_script_dir_name, $dir_name) == 0)
         {
             $class_active = ' class="active"';
         }
