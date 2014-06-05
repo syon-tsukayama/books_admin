@@ -3,6 +3,15 @@
  * 共通機能
  */
 
+// システムの共通URL設定
+$_base_url = 'localhost/books_admin';
+
+// ナビゲーションバーに表示するリンクのURL
+$_navbar_urls = array(
+    '図書データ管理' => $_base_url.'/books',
+    '利用者データ管理' => $_base_url.'/users',
+    );
+
 // 性別チェックのための設定
 $_genders = array('男', '女');
 
@@ -61,6 +70,9 @@ $(function()
  */
 function output_html_navbar()
 {
+    global $_base_url;
+    global $_navbar_urls;
+
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -69,8 +81,16 @@ function output_html_navbar()
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">図書データ管理</a></li>
-                        <li><a href="#">利用者データ管理</a></li>
+<?php
+    foreach($_navbar_urls as $title => $url)
+    {
+?>
+                        <li>
+                            <a href="http://<?php echo $url; ?>"><?php echo $title; ?></a>
+                        </li>
+<?php
+    }
+?>
                     </ul>
                 </div>
             </div>
