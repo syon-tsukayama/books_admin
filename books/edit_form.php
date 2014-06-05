@@ -7,6 +7,12 @@ output_html_header();
 ?>
 
     <body>
+
+<?php
+// ナビゲーションバー出力
+output_html_navbar();
+?>
+
         <div class="container">
             <div class="page-header">
                 <h3>図書データ更新 編集画面</h3>
