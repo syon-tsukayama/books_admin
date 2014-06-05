@@ -16,6 +16,12 @@ function output_html_header()
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <style type="text/css">
+body
+{
+    padding-top: 50px;
+}
+        </style>
         <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
     </head>
 <?php
@@ -46,6 +52,29 @@ $(function()
     );
 });
         </script>
+<?php
+}
+
+
+/**
+ * ナビゲーションバー出力処理
+ */
+function output_html_navbar()
+{
+?>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">図書貸出管理システム</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">図書データ管理</a></li>
+                        <li><a href="#">利用者データ管理</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 <?php
 }
 

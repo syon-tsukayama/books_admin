@@ -6,21 +6,12 @@ require_once('../common.php');
 output_html_header();
 ?>
 
-    <body style="padding-top: 50px;">
+    <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="#" class="navbar-brand">図書貸出管理システム</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">図書データ管理</a></li>
-                        <li><a href="#">利用者データ管理</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<?php
+// ナビゲーションバー出力
+output_html_navbar();
+?>
 
         <div class="container">
             <div class="page-header">
