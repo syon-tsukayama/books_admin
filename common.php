@@ -3,6 +3,9 @@
  * 共通機能
  */
 
+// システム名設定
+$_system_name = '簡易図書貸出管理システム';
+
 // システムの共通URL設定
 $_base_url = 'localhost/books_admin';
 
@@ -23,10 +26,12 @@ $_script_dir_name = basename(dirname($_SERVER['SCRIPT_NAME']));
  */
 function output_html_header()
 {
+    global $_system_name;
     global $_base_url;
 ?>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title><?php echo $_system_name; ?></title>
         <link href="http://<?php echo $_base_url; ?>/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://<?php echo $_base_url; ?>/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <style type="text/css">
@@ -75,6 +80,7 @@ $(function()
  */
 function output_html_navbar()
 {
+    global $_system_name;
     global $_base_url;
     global $_url_dirs;
     global $_script_dir_name;
@@ -83,7 +89,7 @@ function output_html_navbar()
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand">図書貸出管理システム</a>
+                    <a href="#" class="navbar-brand"><?php echo $_system_name; ?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
