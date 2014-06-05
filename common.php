@@ -6,10 +6,10 @@
 // システムの共通URL設定
 $_base_url = 'localhost/books_admin';
 
-// ナビゲーションバーに表示するリンクのURL
-$_navbar_urls = array(
-    '図書データ管理' => $_base_url.'/books',
-    '利用者データ管理' => $_base_url.'/users',
+// 各機能のディレクトリ名
+$_url_dirs = array(
+    'books' => '図書データ管理',
+    'users' => '利用者データ管理'
     );
 
 // 性別チェックのための設定
@@ -71,7 +71,7 @@ $(function()
 function output_html_navbar()
 {
     global $_base_url;
-    global $_navbar_urls;
+    global $_url_dirs;
 
     // 実行中のphpプログラム取得
     // $_SERVER['SCRIPT_NAME']: phpファイル名
@@ -86,11 +86,11 @@ function output_html_navbar()
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 <?php
-    foreach($_navbar_urls as $title => $url)
+    foreach($_url_dirs as $dir_name => $title)
     {
-        // 実行中のphpプログラムのディレクトリとリンク用URL比較
+        // 実行中のphpプログラムのURLとディレクトリ名比較
         // 一致する場合は、<li>タグにclass="active"を設定
-        if(strstr($url, $script_dir))
+        if(preg_match('/'.$dir_name.'$/', $script_dir))
         {
             $class_active = ' class="active"';
         }
@@ -100,7 +100,7 @@ function output_html_navbar()
         }
 ?>
                         <li<?php echo $class_active; ?>>
-                            <a href="http://<?php echo $url; ?>"><?php echo $title; ?></a>
+                            <a href="http://<?php echo $_base_url.'/'.$dir_name; ?>"><?php echo $title; ?></a>
                         </li>
 <?php
     }
