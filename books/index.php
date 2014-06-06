@@ -94,22 +94,54 @@ if(!is_null($conn))
                 <div class="form-group">
                     <label class="col-md-2 control-label">図書名</label>
                     <div class="col-md-4">
-                        <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_front_book_name" value="on">
+                            </span>
+                            <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_end_book_name" value="on">
+                            </span>
+                        </div>
                     </div>
                     <label class="col-md-2 control-label">図書名（カナ）</label>
                     <div class="col-md-4">
-                        <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_front_book_kana" value="on">
+                            </span>
+                            <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_end_book_kana" value="on">
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">著者名</label>
                     <div class="col-md-4">
-                        <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_front_author_name" value="on">
+                            </span>
+                            <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_end_author_name" value="on">
+                            </span>
+                        </div>
                     </div>
                     <label class="col-md-2 control-label">著者名（カナ）</label>
                     <div class="col-md-4">
-                        <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_front_author_kana" value="on">
+                            </span>
+                            <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="asterisk_end_author_kana" value="on">
+                            </span>
+                        </div>
                     </div>
                 </div>
 
