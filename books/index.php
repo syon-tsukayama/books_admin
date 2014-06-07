@@ -86,22 +86,24 @@ if(!is_null($conn))
     }
 
 ?>
+    <!-- 検索フォーム -->
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
-            <!-- 検索フォームタイトル -->
+
+            <!-- タイトル部分 -->
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">検索</a>
                 </h4>
             </div>
 
-            <!-- 検索フォーム -->
+            <!-- 入力フォーム部分 -->
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
 
                     <form action="index.php" method="get" class="form-horizontal" role="form">
 
-                        <!-- 検索フォーム1行目 -->
+                        <!-- フォーム1行目 -->
                         <div class="form-group">
                             <label class="col-md-2 control-label">図書名</label>
                             <div class="col-md-4">
@@ -129,7 +131,7 @@ if(!is_null($conn))
                             </div>
                         </div>
 
-                        <!-- 検索フォーム2行目 -->
+                        <!-- フォーム2行目 -->
                         <div class="form-group">
                             <label class="col-md-2 control-label">著者名</label>
                             <div class="col-md-4">
@@ -157,7 +159,7 @@ if(!is_null($conn))
                             </div>
                         </div>
 
-                        <!-- 検索フォーム3行目 -->
+                        <!-- フォーム3行目 -->
                         <div class="form-group">
                             <label class="col-md-2 control-label">登録日時（開始）</label>
                             <div class="col-md-4">
@@ -179,7 +181,7 @@ if(!is_null($conn))
                             </div>
                         </div>
 
-                        <!-- 検索フォーム4行目 -->
+                        <!-- フォーム4行目 -->
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="検索" class="btn btn-primary" />
