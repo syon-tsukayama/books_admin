@@ -72,7 +72,7 @@ EOS;
                                 </a>
                             </td>
                             <td>
-                                <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
+                                <a href="delete.php?user_id=<?php echo $user_id; ?>" class="btn btn-default" onclick="return confirm('削除しますよー？')">
                                     <span class="glyphicon glyphicon-trash"></span> 削除
                                 </a>
                             </td>
