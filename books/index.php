@@ -86,104 +86,113 @@ if(!is_null($conn))
     }
 
 ?>
-	<div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-	        <h4 class="panel-title">
-        		<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">検索</a>
-        	</h4>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <!-- 検索フォームタイトル -->
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">検索</a>
+                </h4>
+            </div>
+
+            <!-- 検索フォーム -->
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+
+                    <form action="index.php" method="get" class="form-horizontal" role="form">
+
+                        <!-- 検索フォーム1行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">図書名</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_front_book_name" value="on">
+                                    </span>
+                                    <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_end_book_name" value="on">
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">図書名（カナ）</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_front_book_kana" value="on">
+                                    </span>
+                                    <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_end_book_kana" value="on">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 検索フォーム2行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">著者名</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_front_author_name" value="on">
+                                    </span>
+                                    <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_end_author_name" value="on">
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">著者名（カナ）</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_front_author_kana" value="on">
+                                    </span>
+                                    <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="asterisk_end_author_kana" value="on">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 検索フォーム3行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">登録日時（開始）</label>
+                            <div class="col-md-4">
+                                <div class="datetimepicker input-group date">
+                                    <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">登録日時（終了）</label>
+                            <div class="col-md-4">
+                                <div class="datetimepicker input-group date">
+                                    <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 検索フォーム4行目 -->
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="検索" class="btn btn-primary" />
+                                <a href="add_form.php" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-file"></span> 図書データ新規登録フォーム
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
-        <div class="panel-body">
-
-            <form action="index.php" method="get" class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label class="col-md-2 control-label">図書名</label>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_front_book_name" value="on">
-                            </span>
-                            <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_end_book_name" value="on">
-                            </span>
-                        </div>
-                    </div>
-                    <label class="col-md-2 control-label">図書名（カナ）</label>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_front_book_kana" value="on">
-                            </span>
-                            <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_end_book_kana" value="on">
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-2 control-label">著者名</label>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_front_author_name" value="on">
-                            </span>
-                            <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_end_author_name" value="on">
-                            </span>
-                        </div>
-                    </div>
-                    <label class="col-md-2 control-label">著者名（カナ）</label>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_front_author_kana" value="on">
-                            </span>
-                            <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
-                            <span class="input-group-addon">
-                                <input type="checkbox" name="asterisk_end_author_kana" value="on">
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-2 control-label">登録日時（開始）</label>
-                    <div class="col-md-4">
-                        <div class="datetimepicker input-group date">
-                            <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <label class="col-md-2 control-label">登録日時（終了）</label>
-                    <div class="col-md-4">
-                        <div class="datetimepicker input-group date">
-                            <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="検索" class="btn btn-primary" />
-                        <a href="add_form.php" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-file"></span> 図書データ新規登録フォーム
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
     </div>
 
 
