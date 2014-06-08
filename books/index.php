@@ -56,7 +56,6 @@ if(!is_null($conn))
         $asterisk_end_book_name = '';
     }
 
-
     if(isset($_GET['book_kana']))
     {
         $book_kana = trim($_GET['book_kana']);
@@ -66,6 +65,23 @@ if(!is_null($conn))
     {
         $book_kana = '';
     }
+    if(isset($_GET['asterisk_front_book_kana']))
+    {
+        $asterisk_front_book_kana = trim($_GET['asterisk_front_book_kana']);
+    }
+    else
+    {
+        $asterisk_front_book_kana = '';
+    }
+    if(isset($_GET['asterisk_end_book_kana']))
+    {
+        $asterisk_end_book_kana = trim($_GET['asterisk_end_book_kana']);
+    }
+    else
+    {
+        $asterisk_end_book_kana = '';
+    }
+
     if(isset($_GET['author_name']))
     {
         $author_name = trim($_GET['author_name']);
@@ -75,6 +91,23 @@ if(!is_null($conn))
     {
         $author_name = '';
     }
+    if(isset($_GET['asterisk_front_author_name']))
+    {
+        $asterisk_front_author_name = trim($_GET['asterisk_front_author_name']);
+    }
+    else
+    {
+        $asterisk_front_author_name = '';
+    }
+    if(isset($_GET['asterisk_end_author_name']))
+    {
+        $asterisk_end_author_name = trim($_GET['asterisk_end_author_name']);
+    }
+    else
+    {
+        $asterisk_end_author_name = '';
+    }
+
     if(isset($_GET['author_kana']))
     {
         $author_kana = trim($_GET['author_kana']);
@@ -84,6 +117,23 @@ if(!is_null($conn))
     {
         $author_kana = '';
     }
+    if(isset($_GET['asterisk_front_author_kana']))
+    {
+        $asterisk_front_author_kana = trim($_GET['asterisk_front_author_kana']);
+    }
+    else
+    {
+        $asterisk_front_author_kana = '';
+    }
+    if(isset($_GET['asterisk_end_author_kana']))
+    {
+        $asterisk_end_author_kana = trim($_GET['asterisk_end_author_kana']);
+    }
+    else
+    {
+        $asterisk_end_author_kana = '';
+    }
+
     if(isset($_GET['created_from']))
     {
         $created_from = trim($_GET['created_from']);
@@ -93,6 +143,7 @@ if(!is_null($conn))
     {
         $created_from = '';
     }
+
     if(isset($_GET['created_to']))
     {
         $created_to = trim($_GET['created_to']);
@@ -159,11 +210,31 @@ if(!is_null($conn))
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_front_book_kana" value="on">
+                                        <?php
+                                        if(empty($asterisk_front_book_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_book_kana" value="on"<?php echo $checked; ?>>
                                     </span>
                                     <input type="text" name="book_kana" class="form-control" value="<?php echo $book_kana; ?>" />
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_end_book_kana" value="on">
+                                        <?php
+                                        if(empty($asterisk_end_book_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_book_kana" value="on"<?php echo $checked; ?>>
                                     </span>
                                 </div>
                             </div>
@@ -175,11 +246,31 @@ if(!is_null($conn))
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_front_author_name" value="on">
+                                        <?php
+                                        if(empty($asterisk_front_author_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_author_name" value="on"<?php echo $checked; ?>>
                                     </span>
                                     <input type="text" name="author_name" class="form-control" value="<?php echo $author_name; ?>" />
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_end_author_name" value="on">
+                                        <?php
+                                        if(empty($asterisk_end_author_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_author_name" value="on"<?php echo $checked; ?>>
                                     </span>
                                 </div>
                             </div>
@@ -187,11 +278,31 @@ if(!is_null($conn))
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_front_author_kana" value="on">
+                                        <?php
+                                        if(empty($asterisk_front_author_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_author_kana" value="on"<?php echo $checked; ?>>
                                     </span>
                                     <input type="text" name="author_kana" class="form-control" value="<?php echo $author_kana; ?>" />
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_end_author_kana" value="on">
+                                        <?php
+                                        if(empty($asterisk_end_author_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_author_kana" value="on"<?php echo $checked; ?>>
                                     </span>
                                 </div>
                             </div>
@@ -308,17 +419,41 @@ EOS;
 
         if(!empty($book_kana))
         {
-            $stmt->bindValue(':book_kana', $book_kana.'%');
+            if(!empty($asterisk_front_book_kana))
+            {
+                $book_kana = '%'.$book_kana;
+            }
+            if(!empty($asterisk_end_book_kana))
+            {
+                $book_kana = $book_kana.'%';
+            }
+            $stmt->bindValue(':book_kana', $book_kana);
         }
 
         if(!empty($author_name))
         {
-            $stmt->bindValue(':author_name', $author_name.'%');
+            if(!empty($asterisk_front_author_name))
+            {
+                $author_name = '%'.$author_name;
+            }
+            if(!empty($asterisk_end_author_name))
+            {
+                $author_name = $author_name.'%';
+            }
+            $stmt->bindValue(':author_name', $author_name);
         }
 
         if(!empty($author_kana))
         {
-            $stmt->bindValue(':author_kana', $author_kana.'%');
+            if(!empty($asterisk_front_author_kana))
+            {
+                $author_kana = '%'.$author_kana;
+            }
+            if(!empty($asterisk_end_author_kana))
+            {
+                $author_kana = $author_kana.'%';
+            }
+            $stmt->bindValue(':author_kana', $author_kana);
         }
 
         if(!empty($created_from))
