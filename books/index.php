@@ -295,7 +295,15 @@ EOS;
     {
         if(!empty($book_name))
         {
-            $stmt->bindValue(':book_name', '%'.$book_name.'%');
+            if(!empty($asterisk_front_book_name))
+            {
+                $book_name = '%'.$book_name;
+            }
+            if(!empty($asterisk_end_book_name))
+            {
+                $book_name = $book_name.'%';
+            }
+            $stmt->bindValue(':book_name', $book_name);
         }
 
         if(!empty($book_kana))
