@@ -127,11 +127,31 @@ if(!is_null($conn))
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_front_book_name" value="on">
+                                        <?php
+                                        if(empty($asterisk_front_book_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_book_name" value="on"<?php echo $checked; ?>>
                                     </span>
                                     <input type="text" name="book_name" class="form-control" value="<?php echo $book_name; ?>" />
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="asterisk_end_book_name" value="on">
+                                        <?php
+                                        if(empty($asterisk_end_book_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_book_name" value="on"<?php echo $checked; ?>>
                                     </span>
                                 </div>
                             </div>
