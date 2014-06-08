@@ -39,6 +39,24 @@ if(!is_null($conn))
     {
         $book_name = '';
     }
+    if(isset($_GET['asterisk_front_book_name']))
+    {
+        $asterisk_front_book_name = trim($_GET['asterisk_front_book_name']);
+    }
+    else
+    {
+        $asterisk_front_book_name = '';
+    }
+    if(isset($_GET['asterisk_end_book_name']))
+    {
+        $asterisk_end_book_name = trim($_GET['asterisk_end_book_name']);
+    }
+    else
+    {
+        $asterisk_end_book_name = '';
+    }
+
+
     if(isset($_GET['book_kana']))
     {
         $book_kana = trim($_GET['book_kana']);
