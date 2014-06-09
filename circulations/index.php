@@ -62,7 +62,7 @@ EOS;
     // 検索SQL作成
     $sql =<<<EOS
 SELECT
-`id`, `book_id`, `user_id`, `issued_datetime`
+`id`, `book_id`, `user_id`, `issued_datetime`, `return_date`, `returned_datetime`
 FROM `circulations`
 EOS;
 
@@ -98,7 +98,9 @@ ON `users`.`id` = `circulations`.`user_id`
             <th>利用者ID</th>
             <th>利用者氏名</th>
             <th>貸出日時</th>
-            <th>編集</th>
+            <th>返却予定日</th>
+            <th>返却日時</th>
+            <th>返却</th>
             <th>削除</th>
         </tr>
 <?php
@@ -131,9 +133,11 @@ ON `users`.`id` = `circulations`.`user_id`
         ?>
         </td>
         <td><?php echo $row['issued_datetime']; ?></td>
+        <td><?php echo $row['return_date']; ?></td>
+        <td><?php echo $row['returned_datetime']; ?></td>
         <td>
             <a href="edit_form.php?circulation_id=<?php echo $circulation_id; ?>" class="btn btn-default">
-                <i class="glyphicon glyphicon-edit"></i> 編集
+                <i class="glyphicon glyphicon-edit"></i> 返却
             </a>
         </td>
         <td>
