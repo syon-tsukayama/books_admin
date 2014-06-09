@@ -12,7 +12,8 @@ $_base_url = 'localhost/books_admin';
 // 各機能のディレクトリ名
 $_url_dirs = array(
     'books' => '図書データ管理',
-    'users' => '利用者データ管理'
+    'users' => '利用者データ管理',
+    'circulations' => '貸出データ管理'
     );
 
 // 性別チェックのための設定
