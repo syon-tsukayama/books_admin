@@ -474,6 +474,7 @@ EOS;
                 <div class="col-md-12">
                     <table class="table table-striped table-hover">
                         <tr>
+                            <th>No</th>
                             <th>ID</th>
                             <th>図書名</th>
                             <th>図書名カナ</th>
@@ -489,12 +490,17 @@ EOS;
     // SQL実行結果確認
     if($result)
     {
+        $count = 0;
+
         // 検索結果取得
         while($row = $stmt->fetch())
         {
+            $count++;
+
             $book_id = $row['id'];
 ?>
                         <tr>
+                            <td><?php echo $count; ?></td>
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['book_name']; ?></td>
                             <td><?php echo $row['book_kana']; ?></td>
@@ -518,6 +524,7 @@ EOS;
     }
 ?>
                     </table>
+                    <?php echo '検索結果：'.$count.'件'; ?>
                 </div>
             </div>
 <?php
