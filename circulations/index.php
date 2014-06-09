@@ -7,55 +7,60 @@ output_html_header();
 ?>
 
     <body>
+
+<?php
+// ナビゲーションバー出力
+output_html_navbar();
+?>
+
         <div class="container">
-            <h3>貸出データ一覧</h3>
+            <div class="page-header">
+                <h3>貸出データ一覧</h3>
+            </div>
 
 <?php
 // データベース接続
 $conn = connect_database();
 
-if(!$conn)
+// データベース接続確認
+if(!is_null($conn))
 {
-    echo '接続失敗';
-    exit;
-}
-
-// 図書データ取得
-$sql =<<<EOS
+    // 図書データ取得
+    $sql =<<<EOS
 SELECT `id`, `book_name` FROM `books`
 EOS;
 
-// SQL実行準備
-$stmt = $conn->prepare($sql);
-// SQL実行
-$result = $stmt->execute();
+    // SQL実行準備
+    $stmt = $conn->prepare($sql);
+    // SQL実行
+    $result = $stmt->execute();
 
-$book_names = array();
-// 検索結果取得
-while($row = $stmt->fetch())
-{
-	$book_names[$row['id']] = $row['book_name'];
-}
+    $book_names = array();
+    // 検索結果取得
+    while($row = $stmt->fetch())
+    {
+        $book_names[$row['id']] = $row['book_name'];
+    }
 
-// 利用者データ取得
-$sql =<<<EOS
+    // 利用者データ取得
+    $sql =<<<EOS
 SELECT `id`, `name` FROM `users`
 EOS;
 
-// SQL実行準備
-$stmt = $conn->prepare($sql);
-// SQL実行
-$result = $stmt->execute();
+    // SQL実行準備
+    $stmt = $conn->prepare($sql);
+    // SQL実行
+    $result = $stmt->execute();
 
-$user_names = array();
-// 検索結果取得
-while($row = $stmt->fetch())
-{
-	$user_names[$row['id']] = $row['name'];
-}
+    $user_names = array();
+    // 検索結果取得
+    while($row = $stmt->fetch())
+    {
+        $user_names[$row['id']] = $row['name'];
+    }
 
-// 検索SQL作成
-$sql =<<<EOS
+    // 検索SQL作成
+    $sql =<<<EOS
 SELECT
 `id`, `book_id`, `user_id`, `issued_datetime`
 FROM `circulations`
@@ -75,13 +80,16 @@ LEFT JOIN `users`
 ON `users`.`id` = `circulations`.`user_id`
  */
 
-// SQL実行準備
-$stmt = $conn->prepare($sql);
+    // SQL実行準備
+    $stmt = $conn->prepare($sql);
 
-// SQL実行
-$result = $stmt->execute();
-
+    // SQL実行
+    $result = $stmt->execute();
 ?>
+            <a href="add_form.php" class="btn btn-primary">
+                <span class="glyphicon glyphicon-file"></span> 貸出データ登録フォーム
+            </a>
+
     <table class="table table-striped table-hover">
         <tr>
             <th>ID</th>
@@ -94,10 +102,13 @@ $result = $stmt->execute();
             <th>削除</th>
         </tr>
 <?php
-// 検索結果取得
-while($row = $stmt->fetch())
-{
-    $circulation_id = $row['id'];
+    // SQL実行結果確認
+    if($result)
+    {
+        // 検索結果取得
+        while($row = $stmt->fetch())
+        {
+            $circulation_id = $row['id'];
 ?>
     <tr>
         <td><?php echo $circulation_id; ?></td>
@@ -106,7 +117,7 @@ while($row = $stmt->fetch())
         <?php
         if(array_key_exists($row['book_id'], $book_names))
         {
-        	echo $book_names[$row['book_id']];
+            echo $book_names[$row['book_id']];
         }
         ?>
         </td>
@@ -115,7 +126,7 @@ while($row = $stmt->fetch())
         <?php
         if(array_key_exists($row['user_id'], $user_names))
         {
-        	echo $user_names[$row['user_id']];
+            echo $user_names[$row['user_id']];
         }
         ?>
         </td>
@@ -131,15 +142,19 @@ while($row = $stmt->fetch())
             </a>
         </td>
     </tr>
-    <?php
-}
+<?php
+        }
+    }
 ?>
             </table>
+<?php
+}
+?>
         </div>
 
-        <?php
-        // フッタ出力
-        output_html_footer();
-        ?>
+<?php
+// フッタ出力
+output_html_footer();
+?>
     </body>
 </html>
