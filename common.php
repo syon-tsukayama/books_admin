@@ -9,6 +9,12 @@ $_system_name = '簡易図書貸出管理システム';
 // システムの共通URL設定
 $_base_url = 'localhost/books_admin';
 
+// データベース接続情報設定
+$_dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
+
+$_db_username = 'root';
+$_db_password = '';
+
 // 各機能のディレクトリ名
 $_url_dirs = array(
     'books' => array(
@@ -139,19 +145,18 @@ function output_html_navbar()
  */
 function connect_database()
 {
-    // データベース接続情報設定
-    $dsn = 'mysql:dbname=books_admin;host=localhost;charset=utf8';
-
-    $db_username = 'root';
-    $db_password = '';
+    global $_dsn;
+    global $_db_username;
+    global $_db_password;
 
     // データベース接続失敗時に「例外」が発生するので、
     // 「例外」発生時にエラーメッセージを表示する
     try
     {
-        // データベース接続
-        $conn = new PDO($dsn, $db_username, $db_password);
+        // データベース接続実施
+        $conn = new PDO($_dsn, $_db_username, $_db_password);
 
+        // 接続結果確認
         if($conn == null)
         {
 ?>
