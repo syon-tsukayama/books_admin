@@ -11,9 +11,18 @@ $_base_url = 'localhost/books_admin';
 
 // 各機能のディレクトリ名
 $_url_dirs = array(
-    'books' => '図書データ管理',
-    'users' => '利用者データ管理',
-    'circulations' => '貸出データ管理'
+    'books' => array(
+        'title' => '図書データ管理',
+        'script_name' => 'index.php'
+        ),
+    'users' => array(
+        'title' => '利用者データ管理',
+        'script_name' => 'index.php'
+        ),
+    'circulations' => array(
+        'title' => '貸出データ管理',
+        'script_name' => 'index.php'
+        )
     );
 
 // 性別チェックのための設定
@@ -95,7 +104,7 @@ function output_html_navbar()
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 <?php
-    foreach($_url_dirs as $dir_name => $title)
+    foreach($_url_dirs as $dir_name => $data)
     {
         // 実行中のphpプログラムのディレクトリ比較
         // 一致する場合は、<li>タグにclass="active"を設定
@@ -107,9 +116,12 @@ function output_html_navbar()
         {
             $class_active = '';
         }
+
+        // URL作成
+        $url = 'http://'.$_base_url.'/'.$dir_name.'/'.$data['script_name'];
 ?>
                         <li<?php echo $class_active; ?>>
-                            <a href="http://<?php echo $_base_url.'/'.$dir_name; ?>"><?php echo $title; ?></a>
+                            <a href="<?php echo $url; ?>"><?php echo $data['title']; ?></a>
                         </li>
 <?php
     }
