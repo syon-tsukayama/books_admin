@@ -105,7 +105,7 @@ function output_html_navbar()
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand"><?php echo $_system_name; ?></a>
+                    <a href="http://<?php echo $_base_url; ?>" class="navbar-brand"><?php echo $_system_name; ?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
