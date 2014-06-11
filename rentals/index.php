@@ -15,7 +15,7 @@ output_html_navbar();
 
         <div class="container">
             <div class="page-header">
-                <h3>貸出可能図書一覧</h3>
+                <h3>貸出 貸出可能図書一覧</h3>
             </div>
 
 <?php

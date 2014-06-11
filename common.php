@@ -28,7 +28,11 @@ $_url_dirs = array(
     'circulations' => array(
         'title' => '貸出データ管理',
         'script_name' => 'index.php'
-        )
+        ),
+    'rentals' => array(
+        'title' => '貸出',
+        'script_name' => 'index.php'
+        ),
     );
 
 // 性別チェックのための設定
