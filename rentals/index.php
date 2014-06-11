@@ -106,6 +106,7 @@ ON `users`.`id` = `circulations`.`user_id`
     }
 ?>
                     </table>
+
                     <?php echo '検索結果：'.$count.'件'; ?>
                 </div>
             </div>

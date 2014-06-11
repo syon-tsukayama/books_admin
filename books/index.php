@@ -524,6 +524,7 @@ EOS;
     }
 ?>
                     </table>
+
                     <?php echo '検索結果：'.$count.'件'; ?>
                 </div>
             </div>
