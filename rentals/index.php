@@ -26,15 +26,6 @@ $conn = connect_database();
 if(!is_null($conn))
 {
     // 検索SQL作成
-    // 貸し出し中のデータ
-    $sql =<<<EOS
-SELECT
-`id`, `book_id`, `user_id`, `issued_datetime`, `return_date`, `returned_datetime`
-FROM `circulations`
-WHERE `returned_datetime` IS NULL
-EOS;
-
-    // 検索SQL作成
     // 貸し出し中でない図書データ
     $sql =<<<EOS
 SELECT

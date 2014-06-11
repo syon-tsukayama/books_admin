@@ -33,6 +33,10 @@ $_url_dirs = array(
         'title' => '貸出',
         'script_name' => 'index.php'
         ),
+    'returns' => array(
+        'title' => '返却',
+        'script_name' => 'index.php'
+        ),
     );
 
 // 性別チェックのための設定
