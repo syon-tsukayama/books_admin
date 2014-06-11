@@ -39,6 +39,12 @@ $_url_dirs = array(
         ),
     );
 
+// 一人あたりの貸出可能冊数
+$_rental_limit_count = 10;
+
+// 貸出期間 貸出日数
+$_rental_limit_days = 7;
+
 // 性別チェックのための設定
 $_genders = array('男', '女');
 
