@@ -25,40 +25,6 @@ $conn = connect_database();
 // データベース接続確認
 if(!is_null($conn))
 {
-    // 図書データ取得
-    $sql =<<<EOS
-SELECT `id`, `book_name` FROM `books`
-EOS;
-
-    // SQL実行準備
-    $stmt = $conn->prepare($sql);
-    // SQL実行
-    $result = $stmt->execute();
-
-    $book_names = array();
-    // 検索結果取得
-    while($row = $stmt->fetch())
-    {
-        $book_names[$row['id']] = $row['book_name'];
-    }
-
-    // 利用者データ取得
-    $sql =<<<EOS
-SELECT `id`, `name` FROM `users`
-EOS;
-
-    // SQL実行準備
-    $stmt = $conn->prepare($sql);
-    // SQL実行
-    $result = $stmt->execute();
-
-    $user_names = array();
-    // 検索結果取得
-    while($row = $stmt->fetch())
-    {
-        $user_names[$row['id']] = $row['name'];
-    }
-
     // 検索SQL作成
     // 貸し出し中のデータ
     $sql =<<<EOS
@@ -72,9 +38,9 @@ EOS;
     // 貸し出し中でない図書データ
     $sql =<<<EOS
 SELECT
-`id`, `book_id`, `user_id`, `issued_datetime`, `return_date`, `returned_datetime`
-FROM `circulations`
-WHERE `book_id` NOT IN (
+`id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`
+FROM `books`
+WHERE `id` NOT IN (
     SELECT
     `book_id`
     FROM `circulations`
@@ -82,8 +48,6 @@ WHERE `book_id` NOT IN (
     GROUP BY `book_id`
 )
 EOS;
-
-echo $sql;
 
 /*
  * LEFT JOIN を利用したSQL サンプル
@@ -109,67 +73,51 @@ ON `users`.`id` = `circulations`.`user_id`
                 <span class="glyphicon glyphicon-file"></span> 貸出データ登録フォーム
             </a>
 
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>ID</th>
-            <th>図書ID</th>
-            <th>図書名</th>
-            <th>利用者ID</th>
-            <th>利用者氏名</th>
-            <th>貸出日時</th>
-            <th>返却予定日</th>
-            <th>返却日時</th>
-            <th>返却</th>
-            <th>削除</th>
-        </tr>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>No</th>
+                            <th>ID</th>
+                            <th>図書名</th>
+                            <th>図書名カナ</th>
+                            <th>著者名</th>
+                            <th>著者名カナ</th>
+                            <th>登録日時</th>
+                            <th>更新日時</th>
+                        </tr>
 <?php
     // SQL実行結果確認
     if($result)
     {
+        $count = 0;
+
         // 検索結果取得
         while($row = $stmt->fetch())
         {
-            $circulation_id = $row['id'];
+            $count++;
+
+            $book_id = $row['id'];
 ?>
-    <tr>
-        <td><?php echo $circulation_id; ?></td>
-        <td><?php echo $row['book_id']; ?></td>
-        <td>
-        <?php
-        if(array_key_exists($row['book_id'], $book_names))
-        {
-            echo $book_names[$row['book_id']];
-        }
-        ?>
-        </td>
-        <td><?php echo $row['user_id']; ?></td>
-        <td>
-        <?php
-        if(array_key_exists($row['user_id'], $user_names))
-        {
-            echo $user_names[$row['user_id']];
-        }
-        ?>
-        </td>
-        <td><?php echo $row['issued_datetime']; ?></td>
-        <td><?php echo $row['return_date']; ?></td>
-        <td><?php echo $row['returned_datetime']; ?></td>
-        <td>
-            <a href="edit_form.php?circulation_id=<?php echo $circulation_id; ?>" class="btn btn-default">
-                <i class="glyphicon glyphicon-edit"></i> 返却
-            </a>
-        </td>
-        <td>
-            <a href="delete.php?circulation_id=<?php echo $circulation_id; ?>" class="btn btn-default" onclick="if(confirm('削除しますよー？')){return true;} return false;">
-                <i class="glyphicon glyphicon-trash"></i> 削除
-            </a>
-        </td>
-    </tr>
+                        <tr>
+                            <td><?php echo $count; ?></td>
+                            <td><?php echo $book_id; ?></td>
+                            <td><?php echo $row['book_name']; ?></td>
+                            <td><?php echo $row['book_kana']; ?></td>
+                            <td><?php echo $row['author_name']; ?></td>
+                            <td><?php echo $row['author_kana']; ?></td>
+                            <td><?php echo $row['created']; ?></td>
+                            <td><?php echo $row['updated']; ?></td>
+                        </tr>
 <?php
         }
     }
 ?>
-            </table>
+                    </table>
+                    <?php echo '検索結果：'.$count.'件'; ?>
+                </div>
+            </div>
 <?php
 }
 ?>
