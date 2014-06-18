@@ -103,12 +103,16 @@ ON `users`.`id` = `circulations`.`user_id`
                             <th>返却</th>
                         </tr>
 <?php
+    $count = 0;
+
     // SQL実行結果確認
     if($result)
     {
         // 検索結果取得
         while($row = $stmt->fetch())
         {
+            $count++;
+
             $circulation_id = $row['id'];
 ?>
                         <tr>

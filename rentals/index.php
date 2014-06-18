@@ -79,11 +79,11 @@ ON `users`.`id` = `circulations`.`user_id`
                             <th>更新日時</th>
                         </tr>
 <?php
+    $count = 0;
+
     // SQL実行結果確認
     if($result)
     {
-        $count = 0;
-
         // 検索結果取得
         while($row = $stmt->fetch())
         {
