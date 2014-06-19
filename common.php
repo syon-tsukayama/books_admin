@@ -96,9 +96,17 @@ $(function()
     {
         language: 'ja',
         format: 'YYYY-MM-DD HH:mm',
-        useSeconds: false
-    }
-    );
+        pickTime: true
+    });
+
+    // class属性にdatepickerが指定されているHTMLタグについて
+    // datetimepicker機能の日付選択のみ利用できるよう設定する
+    $('.datepicker').datetimepicker(
+    {
+        language: 'ja',
+        format: 'YYYY-MM-DD',
+        pickTime: false
+    });
 });
         </script>
 <?php
