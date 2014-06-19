@@ -26,8 +26,41 @@ if(empty($_POST['circulation_id']))
     exit;
 }
 
+// 図書のチェック
+if(empty($_POST['book_id']))
+{
+    echo '図書IDが未入力です。';
+    exit;
+}
+
+// 利用者のチェック
+if(empty($_POST['user_id']))
+{
+    echo '利用者IDが未入力です。';
+    exit;
+}
+
+// 貸出日時のチェック
+if(empty($_POST['issued_datetime']))
+{
+    echo '貸出日時が未入力です。';
+    exit;
+}
+
+// 返却予定日のチェック
+if(empty($_POST['return_date']))
+{
+    echo '返却予定日が未入力です。';
+    exit;
+}
+
 // 入力データの半角空白削除
 $circulation_id = trim($_POST['circulation_id']);
+$book_id = trim($_POST['book_id']);
+$user_id = trim($_POST['user_id']);
+$issued_datetime = trim($_POST['issued_datetime']);
+$return_date = trim($_POST['return_date']);
+$returned_datetime = trim($_POST['returned_datetime']);
 
 // データベース接続
 $conn = connect_database();
@@ -39,7 +72,11 @@ if(!is_null($conn))
     $sql =<<<EOS
 UPDATE `circulations`
 SET
-  `returned_datetime` = NOW(),
+  `book_id` = :book_id,
+  `user_id` = :user_id,
+  `issued_datetime` = :issued_datetime,
+  `return_date` = :return_date,
+  `returned_datetime` = :returned_datetime,
   `updated` = NOW()
 WHERE `id` = :circulation_id
 EOS;
@@ -49,6 +86,20 @@ EOS;
 
     // 登録するデータを設定
     $stmt->bindValue(':circulation_id', $circulation_id);
+    $stmt->bindValue(':book_id', $book_id);
+    $stmt->bindValue(':user_id', $user_id);
+    $stmt->bindValue(':issued_datetime', $issued_datetime);
+    $stmt->bindValue(':return_date', $return_date);
+
+    if(empty($returned_datetime))
+    {
+        // datetime型なので、入力値が空の場合、NULLを設定
+        $stmt->bindValue(':returned_datetime', null);
+    }
+    else
+    {
+        $stmt->bindValue(':returned_datetime', $returned_datetime);
+    }
 
     // SQL実行
     if($stmt->execute())
@@ -73,7 +124,7 @@ EOS;
 }
 ?>
 
-            <a href="index.php" class="btn btn-default">図書データ一覧</a>
+            <a href="index.php" class="btn btn-default">貸出データ一覧</a>
         </div>
 
 <?php

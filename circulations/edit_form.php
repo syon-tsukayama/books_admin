@@ -38,7 +38,7 @@ if(!is_null($conn))
 {
     // 検索SQL作成
     $sql =<<<EOS
-SELECT `id`, `book_id`, `user_id`, `issued_datetime`, `return_date`
+SELECT `id`, `book_id`, `user_id`, `issued_datetime`, `return_date`, `returned_datetime`
 FROM `circulations`
 WHERE `id` = :circulation_id
 EOS;
@@ -73,34 +73,56 @@ EOS;
                 <div class="form-group">
                     <label class="col-md-2 control-label">図書ID</label>
                     <div class="col-md-4">
-                        <input type="text" name="book_id" class="form-control" value="<?php echo $row['book_id']; ?>" disabled>
+                        <input type="text" name="book_id" class="form-control" value="<?php echo $row['book_id']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">利用者ID</label>
                     <div class="col-md-4">
-                        <input type="text" name="user_id" class="form-control" value="<?php echo $row['user_id']; ?>" disabled>
+                        <input type="text" name="user_id" class="form-control" value="<?php echo $row['user_id']; ?>" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">貸出日時</label>
                     <div class="col-md-4">
-                        <input type="text" name="issued_datetime" class="form-control" value="<?php echo $row['issued_datetime']; ?>" disabled>
+                        <div class="datetimepicker input-group date">
+                            <input type="text" name="issued_datetime" class="form-control" value="<?php echo $row['issued_datetime']; ?>" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">返却予定日</label>
                     <div class="col-md-4">
-                        <input type="text" name="return_date" class="form-control" value="<?php echo $row['return_date']; ?>" disabled>
+                        <div class="datepicker input-group date">
+                            <input type="text" name="return_date" class="form-control" value="<?php echo $row['return_date']; ?>" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">返却日時</label>
+                    <div class="col-md-4">
+                        <div class="datetimepicker input-group date">
+                            <input type="text" name="returned_datetime" class="form-control" value="<?php echo $row['returned_datetime']; ?>" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="返却" class="btn btn-primary" />
+                        <input type="submit" value="更新" class="btn btn-primary" />
 
                         <a href="index.php" class="btn btn-default">貸出データ一覧</a>
                     </div>
