@@ -15,7 +15,7 @@ output_html_navbar();
 
         <div class="container">
             <div class="page-header">
-                <h3>貸出データ更新 確認画面</h3>
+                <h3>貸出データ更新 編集画面</h3>
             </div>
 
 <?php

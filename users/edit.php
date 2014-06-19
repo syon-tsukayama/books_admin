@@ -15,7 +15,7 @@ output_html_navbar();
 
         <div class="container">
             <div class="page-header">
-                <h3>利用者データ編集 更新処理</h3>
+                <h3>利用者データ更新 更新処理</h3>
             </div>
 <?php
 
