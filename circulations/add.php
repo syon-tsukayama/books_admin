@@ -33,14 +33,26 @@ if(empty($_POST['user_id']))
     exit;
 }
 
+// 貸出日時のチェック
+if(empty($_POST['issued_datetime']))
+{
+    echo '貸出日時が未入力です。';
+    exit;
+}
+
+// 返却予定日のチェック
+if(empty($_POST['return_date']))
+{
+    echo '返却予定日が未入力です。';
+    exit;
+}
+
 // 入力データの半角空白削除
 $book_id = trim($_POST['book_id']);
 $user_id = trim($_POST['user_id']);
-
-// 貸出日時設定
-$issued_datetime = date('Y-m-d H:i:s');
-// 返却予定日設定
-$return_date = date('Y-m-d', strtotime('+10 days'));
+$issued_datetime = trim($_POST['issued_datetime']);
+$return_date = trim($_POST['return_date']);
+$returned_datetime = trim($_POST['returned_datetime']);
 
 // データベース接続
 $conn = connect_database();
@@ -51,8 +63,8 @@ if(!is_null($conn))
     // 新規登録SQL作成
     $sql =<<<EOS
 INSERT INTO  `circulations`
-(`book_id`, `user_id`, `issued_datetime`, `return_date`, `created`, `updated`)
-VALUES (:book_id, :user_id, :issued_datetime, :return_date, NOW(), NOW())
+(`book_id`, `user_id`, `issued_datetime`, `return_date`, `returned_datetime`, `created`, `updated`)
+VALUES (:book_id, :user_id, :issued_datetime, :return_date, :returned_datetime, NOW(), NOW())
 EOS;
 
     // SQL実行準備
@@ -63,6 +75,16 @@ EOS;
     $stmt->bindValue(':user_id', $user_id);
     $stmt->bindValue(':issued_datetime', $issued_datetime);
     $stmt->bindValue(':return_date', $return_date);
+
+    if(empty($returned_datetime))
+    {
+        // datetime型なので、入力値が空の場合、NULLを設定
+        $stmt->bindValue(':returned_datetime', null);
+    }
+    else
+    {
+        $stmt->bindValue(':returned_datetime', $returned_datetime);
+    }
 
     // SQL実行
     if($stmt->execute())
