@@ -87,7 +87,7 @@ ON `users`.`id` = `circulations`.`user_id`
     $result = $stmt->execute();
 ?>
             <a href="add_form.php" class="btn btn-primary">
-                <span class="glyphicon glyphicon-file"></span> 貸出データ登録フォーム
+                <span class="glyphicon glyphicon-file"></span> 貸出データ新規登録フォーム
             </a>
 
     <table class="table table-striped table-hover">
@@ -137,7 +137,7 @@ ON `users`.`id` = `circulations`.`user_id`
         <td><?php echo $row['returned_datetime']; ?></td>
         <td>
             <a href="edit_form.php?circulation_id=<?php echo $circulation_id; ?>" class="btn btn-default">
-                <i class="glyphicon glyphicon-edit"></i> 返却
+                <i class="glyphicon glyphicon-edit"></i> 編集
             </a>
         </td>
         <td>
