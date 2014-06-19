@@ -54,14 +54,19 @@ EOS;
     {
         // 検索結果取得
         $row = $stmt->fetch();
-    }
-    else
-    {
-        $row = array();
-        print_r($stmt->errorInfo());
-    }
-?>
 
+        if(empty($row))
+        {
+?>
+            <div class="alert alert-danger">
+                <strong>検索失敗</strong>
+                #<?php echo $circulation_id; ?>は存在しません。
+            </div>
+<?php
+        }
+        else
+        {
+?>
             <form action="edit.php" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="circulation_id" value="<?php echo $row['id']; ?>" />
 
@@ -103,6 +108,18 @@ EOS;
 
             </form>
 <?php
+        }
+    }
+    else
+    {
+?>
+            <div class="alert alert-danger">
+                <strong>検索失敗</strong>
+                #<?php echo $circulation_id; ?>
+                <?php print_r($stmt->errorInfo()); ?>
+            </div>
+<?php
+    }
 }
 ?>
         </div>

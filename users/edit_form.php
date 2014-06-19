@@ -53,14 +53,19 @@ EOS;
     {
         // 検索結果取得
         $row = $stmt->fetch();
-    }
-    else
-    {
-        $row = array();
-        print_r($stmt->errorInfo());
-    }
-?>
 
+        if(empty($row))
+        {
+?>
+            <div class="alert alert-danger">
+                <strong>検索失敗</strong>
+                #<?php echo $user_id; ?>は存在しません。
+            </div>
+<?php
+        }
+        else
+        {
+?>
             <form action="edit.php" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>" />
 
@@ -129,6 +134,18 @@ if(is_array($_genders))
 
             </form>
 <?php
+        }
+    }
+    else
+    {
+?>
+            <div class="alert alert-danger">
+                <strong>検索失敗</strong>
+                #<?php echo $user_id; ?>
+                <?php print_r($stmt->errorInfo()); ?>
+            </div>
+<?php
+    }
 }
 ?>
         </div>
