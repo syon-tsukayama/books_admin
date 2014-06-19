@@ -66,7 +66,7 @@ EOS;
             <div class="alert alert-danger">
                 <strong>更新失敗</strong>
                 #<?php echo $circulation_id; ?>
-                <?php echo $stmt->errorInfo(); ?>
+                <?php print_r($stmt->errorInfo()); ?>
             </div>
 <?php
     }

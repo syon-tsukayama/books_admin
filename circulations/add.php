@@ -101,7 +101,7 @@ EOS;
 ?>
             <div class="alert alert-danger">
                 <strong>登録失敗</strong>
-                <?php echo $stmt->errorInfo(); ?>
+                <?php print_r($stmt->errorInfo()); ?>
             </div>
 <?php
     }
