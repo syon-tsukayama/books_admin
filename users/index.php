@@ -196,7 +196,7 @@ if(!is_null($conn))
 <?php
     // 検索SQL作成
     $sql =<<<EOS
-SELECT `id`, `name`, `tel` FROM `users`
+SELECT `id`, `name`, `kana`, `gender`, `tel`, `created`, `updated` FROM `users`
 EOS;
 
     // SQL実行準備
@@ -217,7 +217,11 @@ EOS;
                         <tr>
                             <th>ID</th>
                             <th>氏名</th>
+                            <th>カナ</th>
+                            <th>性別</th>
                             <th>電話番号</th>
+                            <th>登録日時</th>
+                            <th>更新日時</th>
                             <th>編集</th>
                             <th>削除</th>
                         </tr>
@@ -233,7 +237,11 @@ EOS;
                         <tr>
                             <td><?php echo $user_id; ?></td>
                             <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['kana']; ?></td>
+                            <td><?php echo $row['gender']; ?></td>
                             <td><?php echo $row['tel']; ?></td>
+                            <td><?php echo $row['created']; ?></td>
+                            <td><?php echo $row['updated']; ?></td>
                             <td>
                                 <a href="edit_form.php?user_id=<?php echo $user_id; ?>" class="btn btn-default">
                                     <span class="glyphicon glyphicon-edit"></span> 編集
