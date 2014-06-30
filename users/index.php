@@ -417,9 +417,6 @@ EOS;
     $result = $stmt->execute();
 
 ?>
-            <a href="add_form.php" class="btn btn-primary">
-                <span class="glyphicon glyphicon-file"></span> 利用者データ新規登録フォーム
-            </a>
 
             <div class="row">
                 <div class="col-md-12">
