@@ -26,6 +26,118 @@ $conn = connect_database();
 // データベース接続確認
 if(!is_null($conn))
 {
+    // 検索条件有無フラグ
+    $is_search_option = false;
+
+    // 検索条件取得
+    if(isset($_GET['name']))
+    {
+        $name = trim($_GET['name']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $book_name = '';
+    }
+    if(isset($_GET['asterisk_front_name']))
+    {
+        $asterisk_front_name = trim($_GET['asterisk_front_name']);
+    }
+    else
+    {
+        $asterisk_front_name = '';
+    }
+    if(isset($_GET['asterisk_end_name']))
+    {
+        $asterisk_end_name = trim($_GET['asterisk_end_name']);
+    }
+    else
+    {
+        $asterisk_end_name = '';
+    }
+
+    if(isset($_GET['kana']))
+    {
+        $kana = trim($_GET['kana']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $kana = '';
+    }
+    if(isset($_GET['asterisk_front_kana']))
+    {
+        $asterisk_front_kana = trim($_GET['asterisk_front_kana']);
+    }
+    else
+    {
+        $asterisk_front_kana = '';
+    }
+    if(isset($_GET['asterisk_end_kana']))
+    {
+        $asterisk_end_kana = trim($_GET['asterisk_end_kana']);
+    }
+    else
+    {
+        $asterisk_end_kana = '';
+    }
+
+    if(isset($_GET['tel']))
+    {
+        $tel = trim($_GET['tel']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $tel = '';
+    }
+    if(isset($_GET['asterisk_front_tel']))
+    {
+        $asterisk_front_tel = trim($_GET['asterisk_front_tel']);
+    }
+    else
+    {
+        $asterisk_front_tel = '';
+    }
+    if(isset($_GET['asterisk_end_tel']))
+    {
+        $asterisk_end_tel = trim($_GET['asterisk_end_tel']);
+    }
+    else
+    {
+        $asterisk_end_tel = '';
+    }
+
+    if(isset($_GET['gender']))
+    {
+        $gender = trim($_GET['gender']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $gender = '';
+    }
+
+    if(isset($_GET['created_from']))
+    {
+        $created_from = trim($_GET['created_from']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $created_from = '';
+    }
+
+    if(isset($_GET['created_to']))
+    {
+        $created_to = trim($_GET['created_to']);
+        $is_search_option = true;
+    }
+    else
+    {
+        $created_to = '';
+    }
+
 ?>
     <!-- 検索フォーム -->
     <div class="panel-group" id="accordion">
