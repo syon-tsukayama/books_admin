@@ -311,8 +311,107 @@ if(!is_null($conn))
 SELECT `id`, `name`, `kana`, `gender`, `tel`, `created`, `updated` FROM `users`
 EOS;
 
+    // SQL条件句作成
+    if($is_search_option)
+    {
+        $wheres = array();
+
+        if(!empty($name))
+        {
+            $wheres[] = '`name` LIKE :name';
+        }
+
+        if(!empty($kana))
+        {
+            $wheres[] = '`kana` LIKE :kana';
+        }
+
+        if(!empty($tel))
+        {
+            $wheres[] = '`tel` LIKE :tel';
+        }
+
+        if(!empty($gender))
+        {
+            $wheres[] = '`gender` = :gender';
+        }
+
+        if(!empty($created_from))
+        {
+            $wheres[] = '`created` >= :created_from';
+        }
+
+        if(!empty($created_to))
+        {
+            $wheres[] = '`created` <= :created_to';
+        }
+
+        if(!empty($wheres))
+        {
+            $sql .= ' WHERE '.implode(' AND ', $wheres);
+        }
+    }
+
     // SQL実行準備
     $stmt = $conn->prepare($sql);
+
+    // SQL条件値設定
+    if($is_search_option)
+    {
+        if(!empty($name))
+        {
+            if(!empty($asterisk_front_name))
+            {
+                $name = '%'.$name;
+            }
+            if(!empty($asterisk_end_name))
+            {
+                $name = $name.'%';
+            }
+            $stmt->bindValue(':name', $name);
+        }
+
+        if(!empty($kana))
+        {
+            if(!empty($asterisk_front_kana))
+            {
+                $kana = '%'.$kana;
+            }
+            if(!empty($asterisk_end_kana))
+            {
+                $kana = $kana.'%';
+            }
+            $stmt->bindValue(':kana', $kana);
+        }
+
+        if(!empty($tel))
+        {
+            if(!empty($asterisk_front_tel))
+            {
+                $tel = '%'.$tel;
+            }
+            if(!empty($asterisk_end_tel))
+            {
+                $tel = $tel.'%';
+            }
+            $stmt->bindValue(':tel', $tel);
+        }
+
+        if(!empty($gender))
+        {
+            $stmt->bindValue(':gender', $gender);
+        }
+
+        if(!empty($created_from))
+        {
+            $stmt->bindValue(':created_from', $created_from);
+        }
+
+        if(!empty($created_to))
+        {
+            $stmt->bindValue(':created_to', $created_to);
+        }
+    }
 
     // SQL実行
     $result = $stmt->execute();
