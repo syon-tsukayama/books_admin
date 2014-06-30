@@ -26,6 +26,174 @@ $conn = connect_database();
 // データベース接続確認
 if(!is_null($conn))
 {
+?>
+    <!-- 検索フォーム -->
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+
+            <!-- タイトル部分 -->
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">検索</a>
+                </h4>
+            </div>
+
+            <!-- 入力フォーム部分 -->
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+
+                    <form action="index.php" method="get" class="form-horizontal" role="form">
+
+                        <!-- フォーム1行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">氏名</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_front_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_name" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                    <input type="text" name="name" class="form-control" value="<?php echo $name; ?>" />
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_end_name))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_name" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">氏名（カナ）</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_front_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_kana" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                    <input type="text" name="kana" class="form-control" value="<?php echo $kana; ?>" />
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_end_kana))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_kana" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- フォーム2行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">電話番号</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_front_tel))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_front_tel" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                    <input type="text" name="tel" class="form-control" value="<?php echo $tel; ?>" />
+                                    <span class="input-group-addon">
+                                        <?php
+                                        if(empty($asterisk_end_tel))
+                                        {
+                                            $checked = '';
+                                        }
+                                        else
+                                        {
+                                            $checked = ' checked';
+                                        }
+                                        ?>
+                                        <input type="checkbox" name="asterisk_end_tel" value="on"<?php echo $checked; ?>>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">性別</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" name="gender" class="form-control" value="<?php echo $gender; ?>" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- フォーム3行目 -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">登録日時（開始）</label>
+                            <div class="col-md-4">
+                                <div class="datetimepicker input-group date">
+                                    <input type="text" name="created_from" class="form-control" value="<?php echo $created_from; ?>" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label">登録日時（終了）</label>
+                            <div class="col-md-4">
+                                <div class="datetimepicker input-group date">
+                                    <input type="text" name="created_to" class="form-control" value="<?php echo $created_to; ?>" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- フォーム4行目 -->
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="検索" class="btn btn-primary" />
+                                <a href="add_form.php" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-file"></span> 利用者データ新規登録フォーム
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<?php
     // 検索SQL作成
     $sql =<<<EOS
 SELECT `id`, `name`, `tel` FROM `users`
