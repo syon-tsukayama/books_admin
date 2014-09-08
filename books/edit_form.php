@@ -38,7 +38,7 @@ if(!is_null($conn))
 {
     // 検索SQL作成
     $sql =<<<EOS
-SELECT `id`, `book_name`, `book_kana`, `author_name`, `author_kana` FROM `books`
+SELECT `id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `isbn` FROM `books`
 WHERE `id` = :book_id
 EOS;
 
@@ -68,6 +68,13 @@ EOS;
 ?>
             <form action="edit.php" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>" />
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">ISBN</label>
+                    <div class="col-md-4">
+                        <input type="text" name="isbn" class="form-control" value="<?php echo $row['isbn']; ?>" />
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">図書名</label>

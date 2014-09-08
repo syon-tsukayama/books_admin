@@ -34,6 +34,7 @@ if(empty($_POST['author_name']))
 }
 
 // 入力データの半角空白削除
+$isbn = trim($_POST['isbn']);
 $book_name = trim($_POST['book_name']);
 $book_kana = trim($_POST['book_kana']);
 $author_name = trim($_POST['author_name']);
@@ -48,8 +49,8 @@ if(!is_null($conn))
     // 新規登録SQL作成
     $sql =<<<EOS
 INSERT INTO  `books`
-(`book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`)
-VALUES (:book_name, :book_kana, :author_name, :author_kana, NOW(), NOW())
+(`book_name`, `book_kana`, `author_name`, `author_kana`, `isbn`, `created`, `updated`)
+VALUES (:book_name, :book_kana, :author_name, :author_kana, :isbn, NOW(), NOW())
 EOS;
 
     // SQL実行準備
@@ -60,6 +61,7 @@ EOS;
     $stmt->bindValue(':book_kana', $book_kana);
     $stmt->bindValue(':author_name', $author_name);
     $stmt->bindValue(':author_kana', $author_kana);
+    $stmt->bindValue(':isbn', $isbn);
 
     // SQL実行
     if($stmt->execute())

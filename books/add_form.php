@@ -19,6 +19,14 @@ output_html_navbar();
             </div>
 
             <form action="add.php" method="post" class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">ISBN</label>
+                    <div class="col-md-4">
+                        <input type="text" name="isbn" class="form-control" />
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="col-md-2 control-label">図書名</label>
                     <div class="col-md-4">

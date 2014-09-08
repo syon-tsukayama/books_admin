@@ -352,7 +352,7 @@ if(!is_null($conn))
     // 検索SQL作成
     $sql =<<<EOS
 SELECT
-`id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `created`, `updated`
+`id`, `book_name`, `book_kana`, `author_name`, `author_kana`, `isbn`, `created`, `updated`
 FROM `books`
 EOS;
 
@@ -480,6 +480,7 @@ EOS;
                             <th>図書名カナ</th>
                             <th>著者名</th>
                             <th>著者名カナ</th>
+                            <th>ISBN</th>
                             <th>登録日時</th>
                             <th>更新日時</th>
                             <th>編集</th>
@@ -505,6 +506,7 @@ EOS;
                             <td><?php echo $row['book_kana']; ?></td>
                             <td><?php echo $row['author_name']; ?></td>
                             <td><?php echo $row['author_kana']; ?></td>
+                            <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['created']; ?></td>
                             <td><?php echo $row['updated']; ?></td>
                             <td>

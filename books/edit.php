@@ -42,6 +42,7 @@ if(empty($_POST['author_name']))
 
 // 入力データの半角空白削除
 $book_id = trim($_POST['book_id']);
+$isbn = trim($_POST['isbn']);
 $book_name = trim($_POST['book_name']);
 $book_kana = trim($_POST['book_kana']);
 $author_name = trim($_POST['author_name']);
@@ -61,6 +62,7 @@ SET
   `book_kana` = :book_kana,
   `author_name` = :author_name,
   `author_kana` = :author_kana,
+  `isbn` = :isbn,
   `updated` = NOW()
 WHERE `id` = :book_id
 EOS;
@@ -73,6 +75,7 @@ EOS;
     $stmt->bindValue(':book_kana', $book_kana);
     $stmt->bindValue(':author_name', $author_name);
     $stmt->bindValue(':author_kana', $author_kana);
+    $stmt->bindValue(':isbn', $isbn);
     $stmt->bindValue(':book_id', $book_id);
 
     // SQL実行
