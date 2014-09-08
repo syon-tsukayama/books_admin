@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014 年 7 月 23 日 06:54
+-- Generation Time: 2014 年 9 月 08 日 02:54
 -- サーバのバージョン： 5.6.19
 -- PHP Version: 5.4.24
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `books_admin`
 --
+CREATE DATABASE IF NOT EXISTS `books_admin` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `books_admin`;
 
 -- --------------------------------------------------------
 
@@ -32,10 +34,11 @@ CREATE TABLE IF NOT EXISTS `books` (
   `book_kana` varchar(255) NOT NULL,
   `author_name` varchar(255) NOT NULL,
   `author_kana` varchar(255) NOT NULL,
+  `isbn` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='図書データテーブル' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='図書データテーブル';
 
 -- --------------------------------------------------------
 
@@ -53,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `circulations` (
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='貸出データテーブル' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='貸出データテーブル';
 
 -- --------------------------------------------------------
 
@@ -70,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='利用者データテーブル' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='利用者データテーブル';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
