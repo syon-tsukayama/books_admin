@@ -72,7 +72,36 @@ EOS;
                 <div class="form-group">
                     <label class="col-md-2 control-label">ISBN</label>
                     <div class="col-md-4">
-                        <input type="text" name="isbn" class="form-control" value="<?php echo $row['isbn']; ?>" />
+                        <div class="input-group">
+                            <input type="text" name="isbn" class="form-control" id="input_isbn" value="<?php echo $row['isbn']; ?>" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" id="btn_search_isbn">検索</button>
+                                <script>
+$(function()
+{
+    $('#btn_search_isbn').click(function()
+    {
+        if($('#input_isbn').val() != '')
+        {
+            $.ajax(
+            {
+                url: 'http://<?php echo $_base_url; ?>/shells/get_rss.php?isbn=' + $('#input_isbn').val()
+            }
+            ).done(function(data)
+            {
+                var input_isbn = $('#input_isbn').val();
+                var obj = jQuery.parseJSON(data);
+
+                $('input[name="book_name"]').val(obj[input_isbn].title);
+                $('input[name="author_name"]').val(obj[input_isbn].author);
+            }
+            );
+        }
+    });
+});
+                                </script>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
